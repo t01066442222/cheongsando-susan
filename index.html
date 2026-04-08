@@ -81,7 +81,11 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
 .alert-banner .alert-text strong{color:var(--gold)}
 .alert-banner .alert-date{color:var(--red);font-weight:700;font-size:.9rem}
 .new-badge{display:inline-block;background:linear-gradient(135deg,var(--red),#c0392b);color:#fff;font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:1px}
-@media(max-width:768px){.alert-banner{margin:12px 18px;padding:14px 16px;flex-direction:column;text-align:center}}
+@media(max-width:768px){
+  .alert-banner{margin:12px 14px;padding:14px 14px;flex-direction:column;text-align:center;gap:10px}
+  .alert-banner .alert-icon{font-size:1.6rem}
+  .alert-banner .alert-text{font-size:.78rem}
+}
 
 /* TIMELINE */
 .tl-wrap{max-width:1200px;margin:0 auto;padding:0 40px}
@@ -116,11 +120,38 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
 .tl-action strong{color:var(--teal-light)}
 .tl-phone{font-size:.7rem;color:var(--muted);display:block;margin-top:2px}
 @media(max-width:768px){
-  .tl-wrap{padding:0 18px}
-  .tl-header{flex-direction:column;align-items:flex-start}
-  .tl-legend{margin-left:0}
-  .tl-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(0,168,204,0.3);border-radius:10px}
-  .tl-table{min-width:800px}
+  .tl-wrap{padding:0}
+  .tl-header{flex-direction:column;align-items:flex-start;gap:8px}
+  .tl-header h3{font-size:1rem}
+  .tl-legend{margin-left:0;gap:6px}
+  .tl-leg{font-size:.6rem;padding:2px 7px}
+  .tl-table-wrap{border:none;overflow:visible}
+  .tl-table{min-width:0;width:100%;border-spacing:0 10px}
+  .tl-table thead{display:none}
+  .tl-table tbody{display:flex;flex-direction:column;gap:12px}
+  .tl-row{display:grid !important;grid-template-columns:44px 1fr;grid-template-rows:auto auto auto auto;gap:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0;overflow:hidden}
+  .tl-row td{padding:0;border-radius:0 !important}
+  /* 1열: 순번 */
+  .tl-row td:nth-child(1){grid-row:1/5;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.05);font-size:1.3rem}
+  /* 2열: 긴급도 + 3열: 구분 → 1행에 나란히 */
+  .tl-row td:nth-child(2){grid-column:2;grid-row:1;padding:10px 12px 2px;display:inline-flex;align-items:center;gap:6px}
+  .tl-row td:nth-child(3){display:none}
+  /* 4열: 프로그램명 → 2행 */
+  .tl-row td:nth-child(4){grid-column:2;grid-row:2;padding:2px 12px 6px}
+  .tl-name{font-size:.92rem}
+  .tl-sub{font-size:.68rem}
+  .tl-links{margin-top:4px;gap:5px}
+  .tl-link{font-size:.66rem;padding:4px 9px;min-height:28px}
+  /* 5열: 금액 + 6열: 시기 → 3행에 pill로 */
+  .tl-row td:nth-child(5){grid-column:2;grid-row:3;padding:4px 12px 2px;font-size:.82rem}
+  .tl-row td:nth-child(6){grid-column:2;grid-row:3;display:none}
+  /* 7열: 행동 → 4행 */
+  .tl-row td:nth-child(7){grid-column:2;grid-row:4;padding:6px 12px 12px}
+  .tl-action{font-size:.76rem;line-height:1.6}
+  .tl-phone{font-size:.68rem}
+  /* 금액+시기를 하나로 합치기 위해 5열에 배치 */
+  .tl-row td:nth-child(5)::before{content:'💰 ';font-size:.75rem}
+  .tl-row td:nth-child(6){grid-column:2;grid-row:3;display:inline;padding:0 12px 4px;font-size:.72rem !important;color:var(--muted) !important;font-weight:400 !important}
 }
 .tl-links{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .tl-link{display:inline-flex;align-items:center;gap:3px;font-size:.63rem;font-weight:700;padding:3px 8px;border-radius:5px;text-decoration:none;transition:.2s;white-space:nowrap;cursor:pointer}
@@ -162,7 +193,21 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
 .top5-pill-rate{background:rgba(244,164,43,.15);color:var(--gold);border:1px solid rgba(244,164,43,.25)}
 .top5-pill-term{background:rgba(0,168,204,.12);color:var(--teal-light);border:1px solid rgba(0,168,204,.2)}
 .top5-pill-urg{background:rgba(231,76,60,.15);color:var(--red);border:1px solid rgba(231,76,60,.25);animation:blink 1.5s ease-in-out infinite}
-@media(max-width:768px){.top5-head{flex-direction:column}.top5-rank{width:100%;flex-direction:row;gap:10px;padding:10px 16px}.top5-amt-box{width:100%;flex-direction:row;gap:10px;padding:10px 16px;border-left:none;border-top:1px solid rgba(255,255,255,.05)}.top5-body{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .top5-head{flex-direction:column}
+  .top5-rank{width:100%;flex-direction:row;gap:10px;padding:10px 14px}
+  .top5-rank-num{font-size:1.5rem}
+  .top5-info{padding:10px 14px}
+  .top5-name{font-size:.95rem}
+  .top5-amt-box{width:100%;flex-direction:row;gap:10px;padding:12px 14px;border-left:none;border-top:1px solid rgba(255,255,255,.05)}
+  .top5-amt-num{font-size:1.3rem}
+  .top5-body{grid-template-columns:1fr;padding:0 14px 14px;gap:10px}
+  .top5-meta{padding:0 14px 10px;gap:6px}
+  .top5-pill{font-size:.62rem;padding:3px 7px}
+  .top5-why-text{font-size:.75rem}
+  .top5-link-row{gap:6px}
+  .top5-link{font-size:.68rem;padding:6px 10px;min-height:36px}
+}
 @media print{.top5-card{break-inside:avoid;border:1px solid #ccc !important}.top5-rank{background:#eee !important}.top5-pill-urg{animation:none !important}}
 @media print{.tl-urg-red{animation:none !important}.tl-link{color:#000 !important;border-color:#999 !important;background:#eee !important}}
 .rank-badge{display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:4px 10px;font-size:.7rem;font-weight:700;margin-bottom:10px;border:1px solid}
@@ -239,20 +284,70 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
 
 footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-size:.73rem;color:var(--muted)}
 @media(max-width:768px){
-  .hero h1{font-size:1.8rem}
-  section{padding:24px 18px}
-  .tab-wrapper{padding:0 18px}
-  nav{padding:12px 18px; flex-direction:column; gap:12px; align-items:flex-start}
-  .nav-logo{font-size:1.05rem}
-  .action-bar{width:100%; justify-content:space-between}
-  .hero{padding:36px 18px}
-  .hero-stats{gap:16px}
-  .ref-table-wrapper{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:20px; border:1px solid rgba(0,168,204,0.3); border-radius:10px;}
-  .ref-table{min-width:680px; margin-bottom:0;}
-  .ref-table th, .ref-table td{padding:12px 8px; font-size:0.75rem;}
-  .tab-bar{display:flex; flex-direction:column; gap:8px;}
-  .fund-grid{grid-template-columns:1fr;}
-  .btn-print{padding:6px 10px; font-size:0.7rem;}
+  body{font-size:15px}
+  section{padding:20px 14px}
+  hr.sep{margin:0 14px}
+  nav{padding:12px 14px;flex-direction:column;gap:8px;align-items:flex-start}
+  .nav-logo{font-size:1rem}
+  .action-bar{width:100%;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  .nav-badge{font-size:.65rem;padding:3px 8px}
+  .btn-print{padding:6px 10px;font-size:.68rem}
+  .hero{padding:30px 14px}
+  .hero h1{font-size:1.6rem}
+  .hero-sub{font-size:.82rem}
+  .hero-tag{font-size:.68rem;padding:4px 10px}
+  .hero-stats{gap:12px}
+  .hstat-num{font-size:1.4rem}
+  .hstat-label{font-size:.65rem}
+  .sec-title{font-size:1rem;padding-left:10px;margin-bottom:16px}
+  .profile-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .pcard{padding:12px}
+  .pcard-label{font-size:.62rem}
+  .pcard-value{font-size:.88rem}
+  .diag-box{padding:14px;margin-bottom:10px}
+  .diag-text{font-size:.82rem}
+  .tab-wrapper{padding:0 14px}
+  .tab-bar{display:flex;flex-direction:column;gap:6px;padding:3px}
+  .tab-btn{padding:12px 14px;font-size:.9rem}
+  .fund-grid{grid-template-columns:1fr;gap:14px}
+  .fund-card{padding:16px}
+  .fund-name{font-size:.95rem}
+  .fund-org{font-size:.7rem}
+  .fund-meta{gap:6px}
+  .fmeta{padding:8px}
+  .fmeta-label{font-size:.6rem}
+  .fmeta-value{font-size:.82rem}
+  .fund-tags{gap:4px}
+  .ftag{font-size:.6rem;padding:3px 7px}
+  .fund-desc{font-size:.76rem}
+  .portfolio-box{padding:16px;margin-top:20px}
+  .port-title{font-size:.88rem}
+  .port-row{flex-wrap:wrap;gap:4px;padding:6px 0}
+  .port-name{font-size:.78rem;flex:1;min-width:60%}
+  .port-amt{font-size:.82rem}
+  .exc-box{padding:12px 14px;margin-top:14px}
+  .exc-list li{font-size:.72rem}
+  .algo-grid{grid-template-columns:1fr;gap:10px}
+  .algo-box{padding:14px}
+  .algo-rule{font-size:.72rem;padding:8px 10px}
+  .rm-item{gap:12px;margin-bottom:18px}
+  .rm-num{width:30px;height:30px;font-size:.75rem}
+  .rm-title{font-size:.88rem}
+  .rm-desc{font-size:.76rem}
+  .rm-amount{font-size:.68rem}
+  .note-box{padding:18px}
+  .note-step{gap:10px;margin-bottom:14px}
+  .note-icon{width:28px;height:28px;font-size:.8rem}
+  .note-content h4{font-size:.85rem}
+  .note-content p{font-size:.76rem}
+  .ref-table-wrapper{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:20px;border:1px solid rgba(0,168,204,0.3);border-radius:10px}
+  .ref-table{min-width:600px;margin-bottom:0}
+  .ref-table th,.ref-table td{padding:10px 8px;font-size:.72rem}
+  footer{padding:18px 14px}
+  footer p{font-size:.68rem}
+  /* 체크리스트 모바일 */
+  .alert-banner+section .note-box,
+  [style*="grid-template-columns:repeat(auto-fit,minmax(280px"]{grid-template-columns:1fr !important;gap:10px !important}
 }
 .ref-table-wrapper::-webkit-scrollbar{height:6px}
 .ref-table-wrapper::-webkit-scrollbar-track{background:rgba(255,255,255,0.02)}
@@ -668,7 +763,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">중진공 청년전용창업자금</span><div class="tl-sub">중소벤처기업진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.kosmes.or.kr/dh/map/main.do" target="_blank">🟢 중진공 신청</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941" target="_blank">📋 융자공고</a><a class="tl-link tl-link-news" href="https://digital.kosmes.or.kr/nsh/SH/SBI/SHSBI099M0.do" target="_blank">📅 접수일정</a></div></td>
           <td class="tl-amt">최대 2억</td>
           <td style="font-size:.78rem;color:var(--red);font-weight:700">수시접수<br>(지역본부 예약)</td>
-          <td class="tl-action"><strong>중진공 전남본부에 전화 → 상담 예약 → 온라인 자가진단 완료</strong><br>2분기 접수(4/6~7) 직후이나 청년전용은 수시접수 가능. 즉시 상담 잡기<span class="tl-phone">📞 중진공 전남: 061-280-2600 | 콜센터: 1811-3655</span></td>
+          <td class="tl-action"><strong>중진공 전남본부에 전화 → 상담 예약 → 온라인 자가진단 완료</strong><br>2분기 접수(4/6~7) 직후이나 청년전용은 수시접수 가능. 즉시 상담 잡기<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:var(--red);font-size:1.1rem">2</td>
@@ -677,7 +772,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">청년어촌정착지원사업</span><div class="tl-sub">해양수산부 / 귀어귀촌종합센터</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.sealife.go.kr/" target="_blank">🟢 귀어귀촌센터</a><a class="tl-link tl-link-doc" href="https://www.gov.kr/portal/rcvfvrSvc/dtlEx/119200000002" target="_blank">📋 보조금24</a><a class="tl-link tl-link-local" href="https://www.wando.go.kr/wando/sub.cs?m=1019" target="_blank">🏛️ 완도군 공고</a></div></td>
           <td class="tl-amt">월 110만<br>(3년)</td>
           <td style="font-size:.78rem;color:var(--red);font-weight:700">추가모집<br>마감 임박</td>
-          <td class="tl-action"><strong>완도군청 수산정책과에 전화 → 추가모집 마감일 확인 → 즉시 접수</strong><br>3차 추가모집 진행중. 비상환 보조금이라 최우선 확보 대상<span class="tl-phone">📞 귀어귀촌센터: 1899-9597 | 완도군 수산: 061-550-5393</span></td>
+          <td class="tl-action"><strong>완도군청 수산정책과에 전화 → 추가모집 마감일 확인 → 즉시 접수</strong><br>3차 추가모집 진행중. 비상환 보조금이라 최우선 확보 대상<span class="tl-phone">📞 귀어귀촌센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a> | 완도군 수산: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:var(--red);font-size:1.1rem">3</td>
@@ -686,7 +781,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">완도군 소상공인 이차보전</span><div class="tl-sub">완도군청 (9억 예산)</div><div class="tl-links"><a class="tl-link tl-link-local" href="https://www.wando.go.kr/" target="_blank">🏛️ 완도군청</a><a class="tl-link tl-link-news" href="https://search.naver.com/search.naver?where=news&query=%EC%99%84%EB%8F%84%EA%B5%B0+9%EC%96%B5+%ED%88%AC%EC%9E%85+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%A7%80%EC%9B%90" target="_blank">📰 관련뉴스</a></div></td>
           <td class="tl-amt">이자 3%<br>지원</td>
           <td style="font-size:.78rem;color:var(--red);font-weight:700">선착순<br>예산소진시 종료</td>
-          <td class="tl-action"><strong>완도군청 경제교통과 방문 → 협약은행(신한·농협 등) 대출 신청</strong><br>9억 예산 선착순. 1순위 중진공 자금과 결합 시 실질금리 0%대<span class="tl-phone">📞 완도군 경제교통과: 061-550-5491</span></td>
+          <td class="tl-action"><strong>완도군청 경제교통과 방문 → 협약은행(신한·농협 등) 대출 신청</strong><br>9억 예산 선착순. 1순위 중진공 자금과 결합 시 실질금리 0%대<span class="tl-phone">📞 완도군 경제교통과: <a href="tel:0615505491" style="color:inherit;text-decoration:underline">061-550-5491</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:var(--red);font-size:1.1rem">4</td>
@@ -695,7 +790,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">청년고용연계자금 <span class="new-badge">NEW</span></span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc" target="_blank">🟢 소진공 안내</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://ols.semas.or.kr/" target="_blank">💻 온라인신청</a></div></td>
           <td class="tl-amt">7천만원</td>
           <td style="font-size:.78rem;color:var(--red);font-weight:700">접수중<br>(1/12~ 예산소진시)</td>
-          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 선택 → 신청</strong><br>대표 만31세로 직접 신청 가능. 비수도권 0.2%p 우대. 100% 비대면 가능<span class="tl-phone">📞 소상공인 콜센터: 1533-0100</span></td>
+          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 선택 → 신청</strong><br>대표 만31세로 직접 신청 가능. 비수도권 0.2%p 우대. 100% 비대면 가능<span class="tl-phone">📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a></span></td>
         </tr>
         <!-- 준비 (4~5월) -->
         <tr class="tl-row">
@@ -714,7 +809,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">전남 소상공인 육성자금</span><div class="tl-sub">전라남도 / 전남신용보증재단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.jnsinbo.or.kr/" target="_blank">🟢 전남신보</a><a class="tl-link tl-link-news" href="https://search.naver.com/search.naver?query=%EC%A0%84%EB%82%A8+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%9C%A1%EC%84%B1%EC%9E%90%EA%B8%88+%EC%A7%80%EC%9B%90" target="_blank">📰 안내검색</a></div></td>
           <td class="tl-amt">최대 2억</td>
           <td style="font-size:.78rem;color:#e67e22;font-weight:600">연중 접수<br>(전남신보 경유)</td>
-          <td class="tl-action"><strong>전남신보 완도지점 방문 → 보증서 발급 → 협약은행 대출</strong><br>이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금<span class="tl-phone">📞 전남신보: 1588-3884 | 완도지점: 061-555-5011</span></td>
+          <td class="tl-action"><strong>전남신보 완도지점 방문 → 보증서 발급 → 협약은행 대출</strong><br>이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금<span class="tl-phone">📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 완도지점: <a href="tel:0615555011" style="color:inherit;text-decoration:underline">061-555-5011</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:#e67e22;font-size:1.1rem">7</td>
@@ -723,7 +818,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">소진공 일반경영안정자금</span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc" target="_blank">🟢 소진공 안내</a><a class="tl-link tl-link-doc" href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1064354&parentSeq=1064354" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://ols.semas.or.kr/" target="_blank">💻 온라인신청</a></div></td>
           <td class="tl-amt">7천만원</td>
           <td style="font-size:.78rem;color:#e67e22;font-weight:600">수시접수<br>(예산 여유시)</td>
-          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 일반경영안정 선택 → 비대면 신청</strong><br>4·6순위 대비 보완 자금. 업력 무관. 변동금리 주의<span class="tl-phone">📞 소상공인 콜센터: 1533-0100</span></td>
+          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 일반경영안정 선택 → 비대면 신청</strong><br>4·6순위 대비 보완 자금. 업력 무관. 변동금리 주의<span class="tl-phone">📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a></span></td>
         </tr>
         <!-- 계획 (5~6월) -->
         <tr class="tl-row">
@@ -733,7 +828,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">중진공 창업기반지원자금</span><div class="tl-sub">중소벤처기업진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.kosmes.or.kr/dh/map/main.do" target="_blank">🟢 중진공 신청</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://www.k-startup.go.kr/" target="_blank">🚀 K-Startup</a></div></td>
           <td class="tl-amt">연간 5억</td>
           <td style="font-size:.78rem;color:#f1c40f;font-weight:600">5월 접수 예상<br>(3분기 배치)</td>
-          <td class="tl-action"><strong>5월 접수 전 시설투자계획서 사전 준비 → 설비 견적서 확보</strong><br>냉동·물류 설비 계획 구체화. 매출 15억 실적으로 한도 5억 타겟<span class="tl-phone">📞 중진공 전남: 061-280-2600</span></td>
+          <td class="tl-action"><strong>5월 접수 전 시설투자계획서 사전 준비 → 설비 견적서 확보</strong><br>냉동·물류 설비 계획 구체화. 매출 15억 실적으로 한도 5억 타겟<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:#f1c40f;font-size:1.1rem">9</td>
@@ -742,7 +837,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">스마트상점 기술보급 <span class="new-badge">NEW</span></span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.sbiz.or.kr/smst/index.do" target="_blank">🟢 스마트상점</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117079" target="_blank">📋 공급기업공고</a><a class="tl-link tl-link-news" href="https://www.sbiz.or.kr/smst/bbs/view.do?key=2111306039167&bbsSn=9674" target="_blank">📰 공지사항</a></div></td>
           <td class="tl-amt">450만원<br>(정부90%)</td>
           <td style="font-size:.78rem;color:#f1c40f;font-weight:600">2차 모집 대기<br>(1차: 3/13~4/1)</td>
-          <td class="tl-action"><strong>스마트상점 누리집(sbiz.or.kr/smst) 즐겨찾기 → 2차 공고 알림 설정</strong><br>1차 마감(4/1). 2차 추가모집 5~6월 예상. 스마트POS+재고관리 도입 계획 사전 준비<span class="tl-phone">📞 스마트상점팀: 042-363-6821</span></td>
+          <td class="tl-action"><strong>스마트상점 누리집(sbiz.or.kr/smst) 즐겨찾기 → 2차 공고 알림 설정</strong><br>1차 마감(4/1). 2차 추가모집 5~6월 예상. 스마트POS+재고관리 도입 계획 사전 준비<span class="tl-phone">📞 스마트상점팀: <a href="tel:0423636821" style="color:inherit;text-decoration:underline">042-363-6821</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:#f1c40f;font-size:1.1rem">10</td>
@@ -751,7 +846,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">수산발전기금 (수산정책자금)</span><div class="tl-sub">해양수산부 / 수협은행</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://suhyup-bank.com/" target="_blank">🟢 수협은행</a><a class="tl-link tl-link-doc" href="https://search.naver.com/search.naver?query=%EC%88%98%EC%82%B0%EB%B0%9C%EC%A0%84%EA%B8%B0%EA%B8%88+%EC%82%AC%EC%97%85%EC%A7%91%ED%96%89%EC%A7%80%EC%B9%A8" target="_blank">📋 집행지침</a><a class="tl-link tl-link-news" href="https://www.law.go.kr/" target="_blank">⚖️ 법령정보</a></div></td>
           <td class="tl-amt">최대 15억</td>
           <td style="font-size:.78rem;color:#f1c40f;font-weight:600">수산업경영인<br>선발 후 연계</td>
-          <td class="tl-action"><strong>수협은행 완도지점 방문 → 수산업경영인 선발 신청 → 우대금리 연계</strong><br>경영인 선발 시 1.0% 초저리. 6월 업력 3년 달성 후 유리<span class="tl-phone">📞 수협 완도: 061-552-9651</span></td>
+          <td class="tl-action"><strong>수협은행 완도지점 방문 → 수산업경영인 선발 신청 → 우대금리 연계</strong><br>경영인 선발 시 1.0% 초저리. 6월 업력 3년 달성 후 유리<span class="tl-phone">📞 수협 완도: <a href="tel:0615529651" style="color:inherit;text-decoration:underline">061-552-9651</a></span></td>
         </tr>
         <!-- 여유 (하반기) -->
         <tr class="tl-row">
@@ -761,7 +856,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">귀어 창업 및 주택구입 지원</span><div class="tl-sub">해양수산부</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.gov.kr/portal/service/serviceInfo/119200000012?Mcode=20750" target="_blank">🟢 정부24 안내</a><a class="tl-link tl-link-gov" href="https://www.sealife.go.kr/" target="_blank">🐟 귀어귀촌센터</a></div></td>
           <td class="tl-amt">창업 3억<br>주택 7,500만</td>
           <td style="font-size:.78rem;color:#27ae60;font-weight:600">연중<br>(지자체 수산과)</td>
-          <td class="tl-action">완도군 수산정책과에 귀어인 요건 확인 → 해당 시 융자 신청<span class="tl-phone">📞 귀어센터: 1899-9597</span></td>
+          <td class="tl-action">완도군 수산정책과에 귀어인 요건 확인 → 해당 시 융자 신청<span class="tl-phone">📞 귀어센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:#27ae60;font-size:1.1rem">12</td>
@@ -779,7 +874,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">전남 육성자금 (창업형)</span><div class="tl-sub">전라남도</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.jnsinbo.or.kr/" target="_blank">🟢 전남신보</a><a class="tl-link tl-link-news" href="https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/" target="_blank">📰 22개시군비교</a></div></td>
           <td class="tl-amt">최대 1억</td>
           <td style="font-size:.78rem;color:#27ae60;font-weight:600">연중<br>(전남신보)</td>
-          <td class="tl-action">8순위 시설자금 승인 후 추가 설비 확충용으로 활용<span class="tl-phone">📞 전남신보: 1588-3884</span></td>
+          <td class="tl-action">8순위 시설자금 승인 후 추가 설비 확충용으로 활용<span class="tl-phone">📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:#27ae60;font-size:1.1rem">14</td>
@@ -788,7 +883,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">완도군 어촌 신활력 증진 <span class="new-badge">NEW</span></span><div class="tl-sub">해양수산부 / 완도군</div><div class="tl-links"><a class="tl-link tl-link-local" href="https://www.wando.go.kr/" target="_blank">🏛️ 완도군청</a><a class="tl-link tl-link-news" href="https://go.seoul.co.kr/news/newsView.php?id=20251106500180" target="_blank">📰 선정보도</a><a class="tl-link tl-link-gov" href="https://www.bizinfo.go.kr/" target="_blank">📋 기업마당</a></div></td>
           <td class="tl-amt">100억(지역)</td>
           <td style="font-size:.78rem;color:#27ae60;font-weight:600">2026~2030<br>(장기사업)</td>
-          <td class="tl-action">완도군 해양수산과에 연계사업 참여 의사 전달. 수산인프라 활용 계획 사전 협의<span class="tl-phone">📞 완도군 해양수산과: 061-550-5393</span></td>
+          <td class="tl-action">완도군 해양수산과에 연계사업 참여 의사 전달. 수산인프라 활용 계획 사전 협의<span class="tl-phone">📞 완도군 해양수산과: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a></span></td>
         </tr>
       </tbody>
     </table>
@@ -801,9 +896,9 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
         <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--red)">
           <div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:6px">📞 월요일 — 전화 3건</div>
           <div style="font-size:.76rem;color:var(--muted);line-height:1.8">
-            ① 중진공 전남본부 <strong style="color:var(--teal)">061-280-2600</strong> → 상담 예약<br>
-            ② 완도군 수산정책과 <strong style="color:var(--teal)">061-550-5393</strong> → 어촌정착 마감일 확인<br>
-            ③ 완도군 경제교통과 <strong style="color:var(--teal)">061-550-5491</strong> → 이차보전 잔여예산 확인
+            ① 중진공 전남본부 <a href="tel:0612802600" style="color:var(--teal);font-weight:700;text-decoration:underline">061-280-2600</a> → 상담 예약<br>
+            ② 완도군 수산정책과 <a href="tel:0615505393" style="color:var(--teal);font-weight:700;text-decoration:underline">061-550-5393</a> → 어촌정착 마감일 확인<br>
+            ③ 완도군 경제교통과 <a href="tel:0615505491" style="color:var(--teal);font-weight:700;text-decoration:underline">061-550-5491</a> → 이차보전 잔여예산 확인
           </div>
         </div>
         <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--gold)">
