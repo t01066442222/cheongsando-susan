@@ -129,7 +129,7 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
   .tl-table{min-width:0;width:100%;border-spacing:0 10px}
   .tl-table thead{display:none}
   .tl-table tbody{display:flex;flex-direction:column;gap:12px}
-  .tl-row{display:grid !important;grid-template-columns:44px 1fr;grid-template-rows:auto auto auto auto;gap:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0;overflow:hidden}
+  .tl-row{display:grid !important;grid-template-columns:44px 1fr;grid-template-rows:auto auto auto auto auto;gap:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0;overflow:hidden}
   .tl-row td{padding:0;border-radius:0 !important}
   /* 1열: 순번 */
   .tl-row td:nth-child(1){grid-row:1/5;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.05);font-size:1.3rem}
@@ -142,16 +142,18 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
   .tl-sub{font-size:.68rem}
   .tl-links{margin-top:4px;gap:5px}
   .tl-link{font-size:.66rem;padding:4px 9px;min-height:28px}
-  /* 5열: 금액 + 6열: 시기 → 3행에 pill로 */
-  .tl-row td:nth-child(5){grid-column:2;grid-row:3;padding:4px 12px 2px;font-size:.82rem}
-  .tl-row td:nth-child(6){grid-column:2;grid-row:3;display:none}
-  /* 7열: 행동 → 4행 */
-  .tl-row td:nth-child(7){grid-column:2;grid-row:4;padding:6px 12px 12px}
-  .tl-action{font-size:.76rem;line-height:1.6}
-  .tl-phone{font-size:.68rem}
-  /* 금액+시기를 하나로 합치기 위해 5열에 배치 */
-  .tl-row td:nth-child(5)::before{content:'💰 ';font-size:.75rem}
-  .tl-row td:nth-child(6){grid-column:2;grid-row:3;display:inline;padding:0 12px 4px;font-size:.72rem !important;color:var(--muted) !important;font-weight:400 !important}
+  /* 5열: 금액 → 3행 */
+  .tl-row td:nth-child(5){grid-column:2;grid-row:3;padding:4px 12px 2px;font-size:.8rem}
+  .tl-row td:nth-child(5)::before{content:'💰 ';font-size:.72rem}
+  /* 6열: 시기 → 4행 */
+  .tl-row td:nth-child(6){grid-column:2;grid-row:4;display:block;padding:0 12px 4px;font-size:.7rem !important;color:var(--muted) !important;font-weight:400 !important}
+  .tl-row td:nth-child(6)::before{content:'📅 ';font-size:.68rem}
+  /* 7열: 행동 → 5행 */
+  .tl-row td:nth-child(7){grid-column:2;grid-row:5;padding:6px 12px 12px}
+  .tl-action{font-size:.74rem;line-height:1.6}
+  .tl-phone{font-size:.66rem}
+  /* 순번 높이 확장 */
+  .tl-row td:nth-child(1){grid-row:1/6}
 }
 .tl-links{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .tl-link{display:inline-flex;align-items:center;gap:3px;font-size:.63rem;font-weight:700;padding:3px 8px;border-radius:5px;text-decoration:none;transition:.2s;white-space:nowrap;cursor:pointer}
@@ -200,7 +202,7 @@ hr.sep{border:none;border-top:1px solid rgba(0,168,204,.1);margin:0 40px}
   .top5-info{padding:10px 14px}
   .top5-name{font-size:.95rem}
   .top5-amt-box{width:100%;flex-direction:row;gap:10px;padding:12px 14px;border-left:none;border-top:1px solid rgba(255,255,255,.05)}
-  .top5-amt-num{font-size:1.3rem}
+  .top5-amt-num{font-size:1.2rem;white-space:nowrap}
   .top5-body{grid-template-columns:1fr;padding:0 14px 14px;gap:10px}
   .top5-meta{padding:0 14px 10px;gap:6px}
   .top5-pill{font-size:.62rem;padding:3px 7px}
@@ -296,14 +298,15 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
   .hero h1{font-size:1.6rem}
   .hero-sub{font-size:.82rem}
   .hero-tag{font-size:.68rem;padding:4px 10px}
-  .hero-stats{gap:12px}
-  .hstat-num{font-size:1.4rem}
-  .hstat-label{font-size:.65rem}
+  .hero-stats{gap:8px;display:grid;grid-template-columns:1fr 1fr;text-align:center}
+  .hstat{padding:8px 4px}
+  .hstat-num{font-size:1.15rem;word-break:keep-all;white-space:nowrap}
+  .hstat-label{font-size:.6rem;word-break:keep-all}
   .sec-title{font-size:1rem;padding-left:10px;margin-bottom:16px}
   .profile-grid{grid-template-columns:1fr 1fr;gap:8px}
-  .pcard{padding:12px}
-  .pcard-label{font-size:.62rem}
-  .pcard-value{font-size:.88rem}
+  .pcard{padding:10px 8px}
+  .pcard-label{font-size:.58rem}
+  .pcard-value{font-size:.78rem;word-break:keep-all;overflow-wrap:break-word}
   .diag-box{padding:14px;margin-bottom:10px}
   .diag-text{font-size:.82rem}
   .tab-wrapper{padding:0 14px}
@@ -313,18 +316,19 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
   .fund-card{padding:16px}
   .fund-name{font-size:.95rem}
   .fund-org{font-size:.7rem}
-  .fund-meta{gap:6px}
-  .fmeta{padding:8px}
-  .fmeta-label{font-size:.6rem}
-  .fmeta-value{font-size:.82rem}
+  .fund-meta{grid-template-columns:1fr 1fr;gap:6px}
+  .fmeta{padding:8px 6px;overflow:hidden}
+  .fmeta-label{font-size:.58rem}
+  .fmeta-value{font-size:.75rem;word-break:keep-all;overflow-wrap:break-word;line-height:1.3}
   .fund-tags{gap:4px}
   .ftag{font-size:.6rem;padding:3px 7px}
   .fund-desc{font-size:.76rem}
-  .portfolio-box{padding:16px;margin-top:20px}
-  .port-title{font-size:.88rem}
-  .port-row{flex-wrap:wrap;gap:4px;padding:6px 0}
-  .port-name{font-size:.78rem;flex:1;min-width:60%}
-  .port-amt{font-size:.82rem}
+  .portfolio-box{padding:14px 10px;margin-top:20px}
+  .port-title{font-size:.85rem}
+  .port-row{display:grid !important;grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:0 8px;padding:8px 0;align-items:baseline}
+  .port-name{grid-column:1/3;font-size:.76rem;line-height:1.4}
+  .port-amt{grid-column:1;font-size:.78rem;margin-top:2px}
+  .port-rate{grid-column:2;font-size:.68rem;text-align:right;margin-top:2px}
   .exc-box{padding:12px 14px;margin-top:14px}
   .exc-list li{font-size:.72rem}
   .algo-grid{grid-template-columns:1fr;gap:10px}
