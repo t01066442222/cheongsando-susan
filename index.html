@@ -405,6 +405,77 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 .ref-a:hover{color:#fff;text-decoration:underline}
 .ref-sub{font-size:.7rem;color:var(--muted)}
 .ref-fund{font-weight:700;color:var(--text);font-size:.8rem}
+
+/* APPLICATION GUIDE */
+.guide-wrap{max-width:1200px;margin:0 auto;padding:44px 40px}
+.guide-header{text-align:center;margin-bottom:30px}
+.guide-header h2{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--teal-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.guide-header p{font-size:.85rem;color:var(--muted)}
+.guide-deadline{background:linear-gradient(135deg,rgba(231,76,60,.15),rgba(231,76,60,.08));border:2px solid rgba(231,76,60,.5);border-radius:16px;padding:20px 26px;margin-bottom:26px;text-align:center}
+.guide-deadline .dl-icon{font-size:2.2rem;margin-bottom:6px}
+.guide-deadline .dl-main{font-size:1.1rem;font-weight:800;color:var(--red);margin-bottom:4px}
+.guide-deadline .dl-sub{font-size:.82rem;color:var(--text);line-height:1.7}
+.guide-deadline .dl-sub strong{color:var(--gold)}
+.guide-path{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:20px}
+.guide-path-title{font-size:.78rem;font-weight:700;color:var(--teal);margin-bottom:10px;letter-spacing:.5px}
+.guide-path-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.88rem;font-weight:700}
+.guide-path-flow .gp-item{background:rgba(0,168,204,.12);border:1px solid rgba(0,168,204,.3);color:var(--teal-light);padding:6px 14px;border-radius:8px;white-space:nowrap}
+.guide-path-flow .gp-item.gp-active{background:linear-gradient(135deg,var(--teal),var(--ocean));color:#fff;border-color:var(--teal);box-shadow:0 4px 12px rgba(0,168,204,.3)}
+.guide-path-flow .gp-arrow{color:var(--muted);font-size:.7rem}
+.guide-limit{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.guide-limit-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;transition:.3s}
+.guide-limit-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.guide-limit-card.gl-highlight{border-color:var(--gold);background:linear-gradient(135deg,rgba(244,164,43,.08),rgba(0,168,204,.04))}
+.gl-amount{font-size:1.8rem;font-weight:900;color:var(--gold);line-height:1.1}
+.gl-label{font-size:.78rem;font-weight:700;color:var(--text);margin-top:4px}
+.gl-desc{font-size:.72rem;color:var(--muted);margin-top:4px;line-height:1.5}
+.gl-check{display:inline-block;background:rgba(39,174,96,.15);color:var(--green);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px}
+.guide-steps{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:20px}
+.guide-step{display:flex;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;transition:.3s;position:relative}
+.guide-step:hover{border-color:var(--teal);transform:translateX(4px)}
+.guide-step::after{content:'';position:absolute;bottom:-12px;left:34px;width:2px;height:12px;background:rgba(0,168,204,.2)}
+.guide-step:last-child::after{display:none}
+.gs-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;flex-shrink:0}
+.gs-num-1{background:linear-gradient(135deg,var(--teal),var(--ocean));color:#fff}
+.gs-num-2{background:linear-gradient(135deg,#e67e22,var(--gold));color:#000}
+.gs-num-3{background:linear-gradient(135deg,var(--green),#1abc9c);color:#fff}
+.gs-num-4{background:linear-gradient(135deg,var(--purple),#6c3483);color:#fff}
+.gs-num-5{background:linear-gradient(135deg,var(--gold),#f39c12);color:#000}
+.gs-num-6{background:linear-gradient(135deg,var(--red),#c0392b);color:#fff}
+.gs-content h4{font-size:.9rem;font-weight:700;margin-bottom:3px}
+.gs-content p{font-size:.8rem;color:var(--muted);line-height:1.7}
+.gs-content strong{color:var(--teal-light)}
+.gs-content .gs-tip{display:inline-block;background:rgba(244,164,43,.12);border:1px solid rgba(244,164,43,.25);color:var(--gold);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:5px;margin-top:4px}
+.guide-docs{background:linear-gradient(135deg,rgba(39,174,96,.06),rgba(0,168,204,.04));border:1px solid rgba(39,174,96,.25);border-radius:14px;padding:20px 24px;margin-bottom:20px}
+.guide-docs-title{font-size:.82rem;font-weight:700;color:var(--green);margin-bottom:12px}
+.guide-docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gd-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text);padding:6px 0}
+.gd-item::before{content:'☐';color:var(--teal);font-size:.9rem;flex-shrink:0}
+.gd-item.gd-essential::before{content:'☑';color:var(--green)}
+.guide-contact{background:linear-gradient(135deg,rgba(0,168,204,.1),rgba(244,164,43,.05));border:1px solid var(--teal);border-radius:14px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.gc-left{font-size:.85rem;font-weight:700;color:var(--text)}
+.gc-left span{color:var(--teal-light)}
+.gc-phones{display:flex;gap:14px;flex-wrap:wrap}
+.gc-phone{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.3);border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-size:.82rem;font-weight:700;color:var(--teal-light);text-decoration:none;transition:.3s}
+.gc-phone:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.guide-terms{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.gt-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.gt-label{font-size:.68rem;color:var(--muted);font-weight:600;letter-spacing:.5px;margin-bottom:4px}
+.gt-value{font-size:1rem;font-weight:800;color:var(--teal-light)}
+.gt-sub{font-size:.68rem;color:var(--muted);margin-top:2px}
+@media(max-width:768px){
+  .guide-wrap{padding:20px 14px}
+  .guide-header h2{font-size:1.1rem}
+  .guide-limit{grid-template-columns:1fr}
+  .guide-docs-grid{grid-template-columns:1fr}
+  .guide-path-flow{gap:4px;font-size:.75rem}
+  .guide-path-flow .gp-item{padding:4px 8px;font-size:.72rem}
+  .guide-contact{flex-direction:column;text-align:center}
+  .gc-phones{justify-content:center}
+  .guide-terms{grid-template-columns:1fr 1fr}
+  .guide-step{gap:10px;padding:14px}
+  .gs-num{width:36px;height:36px;font-size:.85rem}
+}
 </style>
 </head>
 <body>
@@ -435,9 +506,10 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 <div class="alert-banner">
   <div class="alert-icon">🚨</div>
   <div class="alert-text">
-    <div class="alert-date">⏰ 2026년 4월 긴급 업데이트</div>
-    <strong>중진공 2분기 접수 (4/6~4/7)</strong> 직후입니다. 청년전용창업자금은 <strong>수시접수</strong>로 지역본부별 상담 예약 후 즉시 신청 가능합니다.<br>
-    ✅ <strong>신규 추가 4건</strong>: 청년고용연계자금·AI바우처·스마트상점·어촌신활력 | 2026년 2분기 소상공인 정책자금 <strong>100% 비대면 신청</strong> 가능 | 비수도권 <strong>금리 0.2%p 우대</strong> 적용
+    <div class="alert-date">🚨 2026년 4월 9일 긴급 업데이트 — 업력 3년 마감 D-67</div>
+    ⚠️ 청산도수산 개업일 <strong>2023.06.15</strong> → 만 3년 도래일 <strong>2026.06.15</strong>까지 <strong style="color:#ff6b6b;font-size:1rem">67일</strong> 남았습니다!<br>
+    ✅ <strong>청년전용창업자금</strong>은 <strong>수시접수</strong> (2026.12.18까지) — 지금 즉시 전남본부 상담 예약 가능<br>
+    📋 정식 유형: <strong>혁신창업사업화자금 &gt; 창업기반지원자금(청년전용창업자금)</strong> | 한도 최대 <strong>2억</strong> | 금리 <strong>2.5% 고정</strong>
   </div>
 </div>
 
@@ -544,8 +616,8 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <div class="top5-rank-label" style="color:var(--teal)">운전자금</div>
         </div>
         <div class="top5-info">
-          <div class="top5-name">중진공 청년전용창업자금</div>
-          <div class="top5-org">중소벤처기업진흥공단 (KOSMES) · 청년 최저금리 전용상품</div>
+          <div class="top5-name">중진공 청년전용창업자금 <span style="font-size:.7rem;color:var(--red);font-weight:800;animation:blink 1.5s ease-in-out infinite">수시접수중</span></div>
+          <div class="top5-org">혁신창업사업화자금 &gt; 창업기반지원자금(청년전용) · 중소벤처기업진흥공단 (KOSMES)</div>
         </div>
         <div class="top5-amt-box">
           <div class="top5-amt-num">최대 2억</div>
@@ -553,20 +625,22 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
         </div>
       </div>
       <div class="top5-meta">
-        <span class="top5-pill top5-pill-rate">💰 금리 연 2.5% 고정 (최저)</span>
+        <span class="top5-pill top5-pill-rate">💰 금리 연 2.5% 고정 (정부 최저)</span>
         <span class="top5-pill top5-pill-term">👤 만 39세 이하 + 업력 3년 미만</span>
-        <span class="top5-pill top5-pill-term">⏳ 3년 거치 5년 상환</span>
-        <span class="top5-pill top5-pill-urg">⏰ 수시접수 — 지금 즉시 상담예약</span>
+        <span class="top5-pill top5-pill-term">💧 운전: 6년(거치3년) · 시설: 10년(거치4년)</span>
+        <span class="top5-pill top5-pill-urg">⏰ 수시접수중 (2026.01.07~12.18)</span>
+        <span class="top5-pill" style="background:rgba(231,76,60,.2);color:var(--red);border:1px solid rgba(231,76,60,.3);animation:blink 1.5s ease-in-out infinite">🔴 업력 마감 D-67 (2026.06.15)</span>
       </div>
       <div class="top5-body">
         <div class="top5-why">
           <div class="top5-why-title">✅ 청산도수산 적합 사유</div>
           <div class="top5-why-text">
-            · 김동률 대표 <strong>만 31세</strong> → 청년 요건 완벽 충족 ✓<br>
-            · 업력 <strong>2년 10개월</strong> → 3년 미만 요건 충족 ✓<br>
-            · 일반 1억, <strong>완도 지역특화 시 2억</strong> 확대 가능<br>
+            · 김동률 대표 <strong>만 31세</strong> → 청년 요건(39세 이하) 완벽 충족 ✓<br>
+            · 업력 <strong>2년 10개월</strong> → 3년 미만 충족 ✓ <span style="color:var(--red);font-weight:700">(⚠️ 6/15 만료)</span><br>
+            · 일반 <strong>1억</strong>, 제조업·중점지원분야 시 <strong>최대 2억</strong><br>
             · 정부 최저 <strong>2.5% 고정금리</strong> — 이보다 싼 자금 없음<br>
-            · 승인 확률 <strong>95%</strong> (매출 15억 실적이 핵심근거)
+            · 매출 <strong>15억 실적</strong> → 승인 확률 <strong>95%</strong><br>
+            · <strong>수시접수</strong> → 지역본부 상담 예약 후 즉시 신청 가능
           </div>
         </div>
         <div class="top5-links-box">
@@ -731,13 +805,190 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
   </div>
 </section>
 
+<!-- ============================================ -->
+<!-- 청년전용창업자금 신청 실전 가이드 (NEW) -->
+<!-- ============================================ -->
+<div style="background:linear-gradient(180deg,rgba(0,168,204,.04) 0%,transparent 100%);border-top:2px solid var(--teal);border-bottom:2px solid var(--teal)">
+<div class="guide-wrap">
+  <div class="guide-header">
+    <div style="display:inline-block;background:rgba(0,168,204,.15);border:1px solid var(--teal);color:var(--teal);font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:2px;margin-bottom:10px">NEW · 2026.04.09 업데이트</div>
+    <h2>📋 청년전용창업자금 — 신청 실전 가이드</h2>
+    <p>김동률 대표님이 지금 바로 신청할 수 있는 구체적 경로와 절차를 정리했습니다</p>
+  </div>
+
+  <!-- 업력 마감 경고 -->
+  <div class="guide-deadline">
+    <div class="dl-icon">⏳</div>
+    <div class="dl-main">업력 3년 마감까지 D-67 (2026.06.15)</div>
+    <div class="dl-sub">
+      청산도수산 개업일 <strong>2023.06.15</strong> → 만 3년 도래 <strong>2026.06.15</strong><br>
+      이 날짜가 지나면 <strong>"업력 3년 미만"</strong> 요건을 상실합니다.<br>
+      단, 수시접수이므로 <strong>지금 상담 예약하면 충분히 가능</strong>합니다. 서두르세요!
+    </div>
+  </div>
+
+  <!-- 정식 신청 유형 경로 -->
+  <div class="guide-path">
+    <div class="guide-path-title">📂 정식 신청 유형 (중진공 홈페이지에서 이 경로로 진입)</div>
+    <div class="guide-path-flow">
+      <span class="gp-item">중소벤처기업진흥공단</span>
+      <span class="gp-arrow">▸</span>
+      <span class="gp-item">혁신창업사업화자금</span>
+      <span class="gp-arrow">▸</span>
+      <span class="gp-item gp-active">창업기반지원자금 (청년전용창업자금)</span>
+    </div>
+    <div style="margin-top:10px;font-size:.78rem;color:var(--muted);line-height:1.6">
+      ※ "청년전용창업자금"은 별도 상품이 아니라 <strong style="color:var(--teal-light)">창업기반지원자금</strong>의 <strong style="color:var(--teal-light)">청년전용 트랙</strong>입니다.<br>
+      ※ 접수기간: <strong style="color:var(--gold)">2026.01.07 ~ 2026.12.18</strong> (연중 수시접수)
+    </div>
+  </div>
+
+  <!-- 한도 비교 -->
+  <div style="font-size:.82rem;font-weight:700;color:var(--teal);margin-bottom:12px;letter-spacing:.5px">💰 대출 한도 — 1억 vs 2억</div>
+  <div class="guide-limit">
+    <div class="guide-limit-card">
+      <div class="gl-amount">1억원</div>
+      <div class="gl-label">일반 기업</div>
+      <div class="gl-desc">제조업·중점지원분야 외 업종</div>
+    </div>
+    <div class="guide-limit-card gl-highlight">
+      <div class="gl-amount">2억원</div>
+      <div class="gl-label">제조업 또는 중점지원분야</div>
+      <div class="gl-desc">혁신성장·초격차·신산업·지역주력산업 등</div>
+      <div class="gl-check">⚡ 2억 타겟 → 아래 확인 필수</div>
+    </div>
+  </div>
+  <div style="background:rgba(244,164,43,.08);border:1px solid rgba(244,164,43,.25);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:.8rem;color:var(--text);line-height:1.7">
+    <strong style="color:var(--gold)">💡 청산도수산 2억 한도 적용 가능성:</strong><br>
+    · 수산물 유통업은 비제조업이므로 <strong>중점지원분야 해당 여부</strong>가 관건입니다<br>
+    · 중점지원분야: 혁신성장분야, 초격차·신산업, 지역주력산업, 뿌리산업 등<br>
+    · <strong style="color:var(--teal-light)">완도군 수산업이 "지역주력산업"으로 분류될 경우 2억 가능</strong><br>
+    · ✅ <strong style="color:var(--red)">반드시 전남본부 상담 시 확인</strong>: "수산물유통업이 중점지원분야에 해당하는지요?"
+  </div>
+
+  <!-- 대출 조건 -->
+  <div style="font-size:.82rem;font-weight:700;color:var(--teal);margin-bottom:12px;letter-spacing:.5px">📊 대출 조건 상세</div>
+  <div class="guide-terms">
+    <div class="gt-card">
+      <div class="gt-label">금리</div>
+      <div class="gt-value" style="color:var(--gold)">연 2.5% 고정</div>
+      <div class="gt-sub">정부 정책자금 최저 수준</div>
+    </div>
+    <div class="gt-card">
+      <div class="gt-label">운전자금</div>
+      <div class="gt-value">6년 (거치 3년)</div>
+      <div class="gt-sub">거치기간 중 이자만 납부</div>
+    </div>
+    <div class="gt-card">
+      <div class="gt-label">시설자금</div>
+      <div class="gt-value">10년 (거치 4년)</div>
+      <div class="gt-sub">담보 4년 / 신용 3년 거치</div>
+    </div>
+    <div class="gt-card">
+      <div class="gt-label">대출 방식</div>
+      <div class="gt-value">직접대출</div>
+      <div class="gt-sub">중진공이 직접 대출 실행</div>
+    </div>
+  </div>
+
+  <!-- 신청 절차 -->
+  <div style="font-size:.82rem;font-weight:700;color:var(--teal);margin-bottom:12px;letter-spacing:.5px">🚀 신청 절차 (6단계)</div>
+  <div class="guide-steps">
+    <div class="guide-step">
+      <div class="gs-num gs-num-1">1</div>
+      <div class="gs-content">
+        <h4>중진공 홈페이지 자가진단</h4>
+        <p><strong>kosmes.or.kr</strong> 접속 → 정책자금 → 자가진단 실시<br>기업 기본정보 입력 후 적합 자금 유형 확인</p>
+        <span class="gs-tip">💡 자가진단은 10분이면 완료됩니다</span>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="gs-num gs-num-2">2</div>
+      <div class="gs-content">
+        <h4>전남지역본부 상담 예약</h4>
+        <p>자가진단 후 <strong>전남지역본부</strong>로 상담 예약 (온라인 또는 전화)<br>📞 <strong>중진공 전남: 061-280-2600</strong> | 콜센터: 1811-3655<br>수시접수이므로 예약 가능한 가장 빠른 날짜로 잡기</p>
+        <span class="gs-tip">💡 "청년전용창업자금(창업기반지원자금) 상담 요청" 이라고 말씀하세요</span>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="gs-num gs-num-3">3</div>
+      <div class="gs-content">
+        <h4>전문가 상담 (대면 또는 비대면)</h4>
+        <p>중진공 전문가와 사업 현황·자금 용도 상담<br>이 때 <strong>수산물유통업 → 중점지원분야 해당 여부</strong> 반드시 확인<br>해당되면 한도 <strong>1억 → 2억 확대</strong></p>
+        <span class="gs-tip">💡 매출 15억 실적 + 사업계획서 지참하면 유리</span>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="gs-num gs-num-4">4</div>
+      <div class="gs-content">
+        <h4>융자신청권 부여 → 신청서 작성</h4>
+        <p>상담 통과 기업에 한해 <strong>융자신청권</strong>이 부여됩니다<br>온라인으로 융자신청서 작성 + 필수 서류 업로드</p>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="gs-num gs-num-5">5</div>
+      <div class="gs-content">
+        <h4>기업심사 (정책우선도 평가)</h4>
+        <p>중진공 내부 심사: 사업 타당성, 재무 건전성, 기술성 등 종합 평가<br>청년 가점 + 비수도권 가점 + 매출실적 → <strong>승인 확률 높음</strong></p>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="gs-num gs-num-6">6</div>
+      <div class="gs-content">
+        <h4>지원 승인 → 대출 실행</h4>
+        <p>승인 통보 후 중진공에서 <strong>직접대출</strong> 실행<br>운전자금: 6년(거치3년) | 시설자금: 10년(거치4년)</p>
+        <span class="gs-tip">💡 전체 소요기간: 상담 예약부터 대출 실행까지 약 4~8주</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 준비 서류 -->
+  <div class="guide-docs">
+    <div class="guide-docs-title">📋 준비 서류 체크리스트</div>
+    <div class="guide-docs-grid">
+      <div class="gd-item gd-essential">사업자등록증 사본</div>
+      <div class="gd-item gd-essential">대표자 신분증</div>
+      <div class="gd-item gd-essential">부가가치세 과세표준증명 (또는 면세사업자 수입금액증명)</div>
+      <div class="gd-item gd-essential">최근 2개년 재무제표 (또는 부가세 신고서)</div>
+      <div class="gd-item">사업계획서 (중진공 양식)</div>
+      <div class="gd-item">자금 용도 증빙 (견적서, 계약서 등)</div>
+      <div class="gd-item">4대보험 가입내역 확인서</div>
+      <div class="gd-item">신용조회 동의서</div>
+    </div>
+    <div style="margin-top:10px;font-size:.72rem;color:var(--muted)">☑ = 필수 서류 | ☐ = 심사 시 추가 요청 가능 | 면세사업자는 부가세 대신 수입금액증명 제출</div>
+  </div>
+
+  <!-- 청산도수산 맞춤 전략 -->
+  <div style="background:linear-gradient(135deg,rgba(244,164,43,.1),rgba(0,168,204,.06));border:2px solid rgba(244,164,43,.3);border-radius:14px;padding:20px 24px;margin-bottom:20px">
+    <div style="font-size:.88rem;font-weight:800;color:var(--gold);margin-bottom:10px">🎯 청산도수산 맞춤 신청 전략</div>
+    <div style="font-size:.82rem;color:var(--text);line-height:1.9">
+      <strong style="color:var(--teal-light)">1단계 (이번 주)</strong>: 중진공 홈페이지 자가진단 완료 + 전남본부 상담 예약<br>
+      <strong style="color:var(--teal-light)">2단계 (상담 시)</strong>: "수산물유통업 중점지원분야 해당 여부" 확인 → 2억 한도 가능 여부 판단<br>
+      <strong style="color:var(--teal-light)">3단계</strong>: 운전자금 우선 신청 (유동성 확보 목적, 2.5% 고정)<br>
+      <strong style="color:var(--gold)">병행 전략</strong>: 완도군 이차보전(3% 지원)과 동시 신청 시 → <strong style="color:var(--green)">실질금리 0%대</strong> 달성 가능<br>
+      <strong style="color:var(--red)">⚠️ 주의</strong>: 업력 3년 미만 요건은 <strong>신청 시점</strong> 기준 — 6/15 이전에 반드시 신청 완료
+    </div>
+  </div>
+
+  <!-- 연락처 -->
+  <div class="guide-contact">
+    <div class="gc-left">📞 <span>지금 바로 전화하세요</span></div>
+    <div class="gc-phones">
+      <a class="gc-phone" href="tel:0612802600">🏢 중진공 전남본부<br>061-280-2600</a>
+      <a class="gc-phone" href="tel:18113655">📱 정책자금 콜센터<br>1811-3655</a>
+      <a class="gc-phone" href="tel:1357">🏛️ 중소기업 통합<br>1357</a>
+    </div>
+  </div>
+</div>
+</div>
+
 <hr class="sep">
 
 <!-- PRIORITY TIMELINE -->
 <section style="padding-bottom:0">
   <div class="tl-wrap" style="padding:0">
     <div class="tl-header">
-      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 신청 긴급도 순위표 <span style="font-size:.7rem;color:var(--red);font-weight:600">(2026.04.08 기준)</span></h3>
+      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 신청 긴급도 순위표 <span style="font-size:.7rem;color:var(--red);font-weight:600">(2026.04.09 기준)</span></h3>
       <div class="tl-legend">
         <span class="tl-leg tl-leg-red">🔴 즉시 (4월 내)</span>
         <span class="tl-leg tl-leg-orange">🟠 준비 (4~5월)</span>
@@ -767,7 +1018,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <td><span class="tl-name">중진공 청년전용창업자금</span><div class="tl-sub">중소벤처기업진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.kosmes.or.kr/dh/map/main.do" target="_blank">🟢 중진공 신청</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941" target="_blank">📋 융자공고</a><a class="tl-link tl-link-news" href="https://digital.kosmes.or.kr/nsh/SH/SBI/SHSBI099M0.do" target="_blank">📅 접수일정</a></div></td>
           <td class="tl-amt">최대 2억</td>
           <td style="font-size:.78rem;color:var(--red);font-weight:700">수시접수<br>(지역본부 예약)</td>
-          <td class="tl-action"><strong>중진공 전남본부에 전화 → 상담 예약 → 온라인 자가진단 완료</strong><br>2분기 접수(4/6~7) 직후이나 청년전용은 수시접수 가능. 즉시 상담 잡기<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a></span></td>
+          <td class="tl-action"><strong>① kosmes.or.kr 자가진단 → ② 전남본부 상담 예약 → ③ 상담 시 "청년전용창업자금(창업기반지원자금)" 신청</strong><br>수시접수 (12/18까지). 업력 3년 마감 6/15 전 반드시 신청 완료! 중점지원분야 해당 시 한도 2억<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a></span></td>
         </tr>
         <tr class="tl-row">
           <td style="color:var(--red);font-size:1.1rem">2</td>
@@ -942,23 +1193,25 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
   <div class="fund-grid">
 
     <div class="fund-card fc-op1">
-      <div class="rank-badge rb-teal">🥇 1순위 · 최우선</div>
-      <div class="fund-name">중진공 청년전용창업자금</div>
-      <div class="fund-org">중소벤처기업진흥공단 (KOSMES)</div>
+      <div class="rank-badge rb-teal">🥇 1순위 · 최우선 <span class="new-badge">수시접수중</span></div>
+      <div class="fund-name">중진공 청년전용창업자금 (창업기반지원자금)</div>
+      <div class="fund-org">혁신창업사업화자금 &gt; 창업기반지원자금(청년전용) · 중소벤처기업진흥공단</div>
       <div class="fund-meta">
         <div class="fmeta"><div class="fmeta-label">금리</div><div class="fmeta-value rate">연 2.5% 고정</div></div>
-        <div class="fmeta"><div class="fmeta-label">한도</div><div class="fmeta-value lim">최대 2억원</div></div>
-        <div class="fmeta"><div class="fmeta-label">용도</div><div class="fmeta-value">운전자금</div></div>
-        <div class="fmeta"><div class="fmeta-label">상환</div><div class="fmeta-value">3년 거치 5년</div></div>
+        <div class="fmeta"><div class="fmeta-label">한도</div><div class="fmeta-value lim">1억 (일반) / 2억 (중점)</div></div>
+        <div class="fmeta"><div class="fmeta-label">운전자금</div><div class="fmeta-value">6년 (거치 3년)</div></div>
+        <div class="fmeta"><div class="fmeta-label">시설자금</div><div class="fmeta-value">10년 (거치 4년)</div></div>
       </div>
       <div class="fund-tags">
-        <span class="ftag ftag-ok">만 39세 이하 ✓</span>
+        <span class="ftag ftag-ok">만 39세 이하 ✓ (만31세)</span>
         <span class="ftag ftag-ok">업력 3년 미만 ✓</span>
-        <span class="ftag ftag-blue">지역특화 2억 가능</span>
+        <span class="ftag ftag-warn">⚠️ 업력 마감 D-67 (6/15)</span>
+        <span class="ftag ftag-blue">중점지원분야 시 2억</span>
+        <span class="ftag ftag-new">수시접수 (~12/18)</span>
       </div>
       <div class="pb-label"><span>승인 확률</span><span>95%</span></div>
       <div class="pb-track"><div class="pb-fill pb-high" style="width:95%"></div></div>
-      <div class="fund-desc">매출 15억 실적이 사업계획서 핵심 근거. 완도 지역특화 주력산업 분류 시 한도 2억원 확대. 최저 고정금리로 운전자금 우선 확보.</div>
+      <div class="fund-desc">정식유형: 혁신창업사업화자금 → 창업기반지원자금(청년전용). 매출 15억 실적이 핵심 근거. 수산물유통업 중점지원분야 해당 시 한도 2억 확대. 수시접수로 전남본부 상담 예약 후 즉시 신청. 절차: 자가진단 → 상담예약 → 상담 → 신청권 부여 → 심사 → 대출실행 (약 4~8주).</div>
     </div>
 
     <div class="fund-card fc-op2">
@@ -1540,7 +1793,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 </section>
 
 <footer>
-  <p>📋 청산도수산 정책자금 컨설팅 리포트 | 작성: 2026년 3월 18일 | 방문 상담: 2026년 3월 19일 | <strong style="color:var(--red)">업데이트: 2026년 4월 8일 (신규 4건 추가)</strong></p>
+  <p>📋 청산도수산 정책자금 컨설팅 리포트 | 작성: 2026년 3월 18일 | 방문 상담: 2026년 3월 19일 | <strong style="color:var(--red)">업데이트: 2026년 4월 9일 (청년전용창업자금 신청 실전 가이드 추가)</strong></p>
   <p style="margin-top:5px">본 자료는 컨설팅 참고용이며, 실제 신청 시 각 기관의 최신 공고를 반드시 확인하시기 바랍니다.</p>
   <p style="margin-top:10px;padding:10px 16px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);border-radius:8px;display:inline-block">
     📱 <strong style="color:var(--green)">모바일 공유 링크</strong>&ensp;
