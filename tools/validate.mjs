@@ -30,7 +30,7 @@ catch (e) { fail('JS 문법 오류: ' + (e.stderr ? e.stderr.toString() : e.mess
 // 3) 런타임 실행 (DOM 스텁) — FUNDS 파싱/렌더 오류 잡기
 const store = {};
 globalThis.document = {
-  getElementById: (id) => (store[id] = store[id] || { textContent: '', innerHTML: '' }),
+  getElementById: (id) => (store[id] = store[id] || { textContent: '', innerHTML: '', style: {} }),
   querySelectorAll: () => []
 };
 globalThis.window = { addEventListener: () => {} };
