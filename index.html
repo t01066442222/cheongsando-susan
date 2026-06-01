@@ -405,14 +405,35 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 .ref-a:hover{color:#fff;text-decoration:underline}
 .ref-sub{font-size:.7rem;color:var(--muted)}
 .ref-fund{font-weight:700;color:var(--text);font-size:.8rem}
+/* TODAY DATE BANNER */
+.today-banner{background:linear-gradient(90deg,#0a3d62,#00a8cc,#0a3d62);background-size:200% 100%;animation:bgshift 6s ease-in-out infinite;color:#fff;padding:10px 24px;display:flex;justify-content:center;align-items:center;gap:14px;font-size:.92rem;font-weight:700;letter-spacing:.5px;box-shadow:0 2px 12px rgba(0,168,204,.35);position:sticky;top:0;z-index:200;flex-wrap:wrap}
+@keyframes bgshift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.today-icon{font-size:1.15rem}
+.today-label{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:1.5px;text-transform:uppercase}
+.today-date{font-size:1rem;font-weight:900;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.today-confirm{font-size:.7rem;font-weight:600;color:#fff;background:rgba(244,164,43,.85);padding:3px 9px;border-radius:14px;border:1px solid rgba(255,255,255,.4)}
+@media(max-width:768px){
+  .today-banner{padding:9px 12px;gap:8px;font-size:.78rem}
+  .today-date{font-size:.86rem}
+  .today-label{font-size:.62rem;letter-spacing:1px}
+  .today-confirm{font-size:.62rem;padding:2px 7px}
+}
 </style>
 </head>
 <body>
 
+<!-- TODAY DATE BANNER (자동 갱신) -->
+<div class="today-banner">
+  <span class="today-icon">📅</span>
+  <span class="today-label">TODAY · 오늘 날짜 기준</span>
+  <span class="today-date" id="todayDate">오늘 날짜 자동 표시</span>
+  <span class="today-confirm" id="todayConfirm">✓ 정책자금 현황 최신 확인 완료</span>
+</div>
+
 <nav>
   <div class="nav-logo">🐚 청산도수산 정책자금 컨설팅</div>
   <div class="action-bar">
-    <div style="font-size:.78rem;color:var(--muted)">방문 상담일: 2026.03.19 · <span style="color:var(--red);font-weight:700">업데이트: 2026.04.08</span></div>
+    <div style="font-size:.78rem;color:var(--muted)">방문 상담일: 2026.03.19 · <span style="color:var(--red);font-weight:700" id="navUpdateDate">업데이트: 2026.04.28</span></div>
     <div class="nav-badge">⚡ 운전+시설 분리 분석</div>
     <button class="btn-print" onclick="window.print()">🖨️ 인쇄/PDF 저장</button>
   </div>
@@ -432,13 +453,9 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 </div>
 
 <!-- URGENT ALERT -->
-<div class="alert-banner">
+<div class="alert-banner" id="alertBanner">
   <div class="alert-icon">🚨</div>
-  <div class="alert-text">
-    <div class="alert-date">⏰ 2026년 4월 긴급 업데이트</div>
-    <strong>중진공 2분기 접수 (4/6~4/7)</strong> 직후입니다. 청년전용창업자금은 <strong>수시접수</strong>로 지역본부별 상담 예약 후 즉시 신청 가능합니다.<br>
-    ✅ <strong>신규 추가 4건</strong>: 청년고용연계자금·AI바우처·스마트상점·어촌신활력 | 2026년 2분기 소상공인 정책자금 <strong>100% 비대면 신청</strong> 가능 | 비수도권 <strong>금리 0.2%p 우대</strong> 적용
-  </div>
+  <div class="alert-text" id="alertText"></div>
 </div>
 
 <!-- COMPANY PROFILE -->
@@ -512,7 +529,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
         <span class="top5-pill top5-pill-rate">💰 금리 약 2.4% (기준-0.6%p)</span>
         <span class="top5-pill top5-pill-term">📅 업력 7년 미만 대상</span>
         <span class="top5-pill top5-pill-term">🔧 시설·운전 병행 가능</span>
-        <span class="top5-pill top5-pill-urg">⏰ 직접대출 4/13~ 접수 예상</span>
+        <span class="top5-pill top5-pill-urg">⏰ 수시접수 — 매월 배치 상담예약</span>
       </div>
       <div class="top5-body">
         <div class="top5-why">
@@ -737,12 +754,12 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 <section style="padding-bottom:0">
   <div class="tl-wrap" style="padding:0">
     <div class="tl-header">
-      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 신청 긴급도 순위표 <span style="font-size:.7rem;color:var(--red);font-weight:600">(2026.04.08 기준)</span></h3>
+      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 신청 긴급도 순위표 <span style="font-size:.7rem;color:var(--red);font-weight:600" id="priorityDate">(오늘 기준 · 실시간 D-day)</span></h3>
       <div class="tl-legend">
-        <span class="tl-leg tl-leg-red">🔴 즉시 (4월 내)</span>
-        <span class="tl-leg tl-leg-orange">🟠 준비 (4~5월)</span>
-        <span class="tl-leg tl-leg-yellow">🟡 계획 (5~6월)</span>
-        <span class="tl-leg tl-leg-green">🟢 여유 (하반기)</span>
+        <span class="tl-leg tl-leg-red">🔴 즉시 (수시·선착순·D-7)</span>
+        <span class="tl-leg tl-leg-orange">🟠 임박 (D-21 이내)</span>
+        <span class="tl-leg tl-leg-yellow">🟡 준비 (D-45 이내)</span>
+        <span class="tl-leg tl-leg-green">🟢 여유 (연중·D-45+)</span>
       </div>
     </div>
     <div class="tl-table-wrap">
@@ -758,170 +775,11 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
           <th>지금 해야 할 행동</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- 즉시 (4월 내) -->
-        <tr class="tl-row">
-          <td style="color:var(--red);font-size:1.1rem">1</td>
-          <td><span class="tl-urg tl-urg-red">🔴 즉시</span></td>
-          <td><span class="tl-type tl-type-op">운전</span></td>
-          <td><span class="tl-name">중진공 청년전용창업자금</span><div class="tl-sub">중소벤처기업진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.kosmes.or.kr/dh/map/main.do" target="_blank">🟢 중진공 신청</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941" target="_blank">📋 융자공고</a><a class="tl-link tl-link-news" href="https://digital.kosmes.or.kr/nsh/SH/SBI/SHSBI099M0.do" target="_blank">📅 접수일정</a></div></td>
-          <td class="tl-amt">최대 2억</td>
-          <td style="font-size:.78rem;color:var(--red);font-weight:700">수시접수<br>(지역본부 예약)</td>
-          <td class="tl-action"><strong>중진공 전남본부에 전화 → 상담 예약 → 온라인 자가진단 완료</strong><br>2분기 접수(4/6~7) 직후이나 청년전용은 수시접수 가능. 즉시 상담 잡기<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:var(--red);font-size:1.1rem">2</td>
-          <td><span class="tl-urg tl-urg-red">🔴 즉시</span></td>
-          <td><span class="tl-type tl-type-grant">보조</span></td>
-          <td><span class="tl-name">청년어촌정착지원사업</span><div class="tl-sub">해양수산부 / 귀어귀촌종합센터</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.sealife.go.kr/" target="_blank">🟢 귀어귀촌센터</a><a class="tl-link tl-link-doc" href="https://www.gov.kr/portal/rcvfvrSvc/dtlEx/119200000002" target="_blank">📋 보조금24</a><a class="tl-link tl-link-local" href="https://www.wando.go.kr/wando/sub.cs?m=1019" target="_blank">🏛️ 완도군 공고</a></div></td>
-          <td class="tl-amt">월 110만<br>(3년)</td>
-          <td style="font-size:.78rem;color:var(--red);font-weight:700">추가모집<br>마감 임박</td>
-          <td class="tl-action"><strong>완도군청 수산정책과에 전화 → 추가모집 마감일 확인 → 즉시 접수</strong><br>3차 추가모집 진행중. 비상환 보조금이라 최우선 확보 대상<span class="tl-phone">📞 귀어귀촌센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a> | 완도군 수산: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:var(--red);font-size:1.1rem">3</td>
-          <td><span class="tl-urg tl-urg-red">🔴 즉시</span></td>
-          <td><span class="tl-type tl-type-op">운전</span></td>
-          <td><span class="tl-name">완도군 소상공인 이차보전</span><div class="tl-sub">완도군청 (9억 예산)</div><div class="tl-links"><a class="tl-link tl-link-local" href="https://www.wando.go.kr/" target="_blank">🏛️ 완도군청</a><a class="tl-link tl-link-news" href="https://search.naver.com/search.naver?where=news&query=%EC%99%84%EB%8F%84%EA%B5%B0+9%EC%96%B5+%ED%88%AC%EC%9E%85+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%A7%80%EC%9B%90" target="_blank">📰 관련뉴스</a></div></td>
-          <td class="tl-amt">이자 3%<br>지원</td>
-          <td style="font-size:.78rem;color:var(--red);font-weight:700">선착순<br>예산소진시 종료</td>
-          <td class="tl-action"><strong>완도군청 경제교통과 방문 → 협약은행(신한·농협 등) 대출 신청</strong><br>9억 예산 선착순. 1순위 중진공 자금과 결합 시 실질금리 0%대<span class="tl-phone">📞 완도군 경제교통과: <a href="tel:0615505491" style="color:inherit;text-decoration:underline">061-550-5491</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:var(--red);font-size:1.1rem">4</td>
-          <td><span class="tl-urg tl-urg-red">🔴 즉시</span></td>
-          <td><span class="tl-type tl-type-op">운전</span></td>
-          <td><span class="tl-name">청년고용연계자금 <span class="new-badge">NEW</span></span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc" target="_blank">🟢 소진공 안내</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://ols.semas.or.kr/" target="_blank">💻 온라인신청</a></div></td>
-          <td class="tl-amt">7천만원</td>
-          <td style="font-size:.78rem;color:var(--red);font-weight:700">접수중<br>(1/12~ 예산소진시)</td>
-          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 선택 → 신청</strong><br>대표 만31세로 직접 신청 가능. 비수도권 0.2%p 우대. 100% 비대면 가능<span class="tl-phone">📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a></span></td>
-        </tr>
-        <!-- 준비 (4~5월) -->
-        <tr class="tl-row">
-          <td style="color:#e67e22;font-size:1.1rem">5</td>
-          <td><span class="tl-urg tl-urg-orange">🟠 4~5월</span></td>
-          <td><span class="tl-type tl-type-grant">보조</span></td>
-          <td><span class="tl-name">소상공인 AI 활용 바우처 <span class="new-badge">NEW</span></span><div class="tl-sub">중소벤처기업부 (2026 신규)</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.sbiz.or.kr/" target="_blank">🟢 소상공인24</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117016" target="_blank">📋 통합공고</a><a class="tl-link tl-link-news" href="https://kbthink.com/business/tips/business-support-policy.html" target="_blank">📰 지원총정리</a></div></td>
-          <td class="tl-amt">500만원</td>
-          <td style="font-size:.78rem;color:#e67e22;font-weight:600">접수중<br>(2026 신규)</td>
-          <td class="tl-action"><strong>소상공인24(sbiz24.kr) 접속 → AI 바우처 사업 검색 → 온라인 신청</strong><br>AI 수급예측·재고관리 시스템 도입. 상환 없는 바우처. 서류: 사업자등록증+소상공인확인서<span class="tl-phone">📞 중기부 콜센터: 1357</span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#e67e22;font-size:1.1rem">6</td>
-          <td><span class="tl-urg tl-urg-orange">🟠 4~5월</span></td>
-          <td><span class="tl-type tl-type-op">운전</span></td>
-          <td><span class="tl-name">전남 소상공인 육성자금</span><div class="tl-sub">전라남도 / 전남신용보증재단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.jnsinbo.or.kr/" target="_blank">🟢 전남신보</a><a class="tl-link tl-link-news" href="https://search.naver.com/search.naver?query=%EC%A0%84%EB%82%A8+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%9C%A1%EC%84%B1%EC%9E%90%EA%B8%88+%EC%A7%80%EC%9B%90" target="_blank">📰 안내검색</a></div></td>
-          <td class="tl-amt">최대 2억</td>
-          <td style="font-size:.78rem;color:#e67e22;font-weight:600">연중 접수<br>(전남신보 경유)</td>
-          <td class="tl-action"><strong>전남신보 완도지점 방문 → 보증서 발급 → 협약은행 대출</strong><br>이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금<span class="tl-phone">📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 완도지점: <a href="tel:0615555011" style="color:inherit;text-decoration:underline">061-555-5011</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#e67e22;font-size:1.1rem">7</td>
-          <td><span class="tl-urg tl-urg-orange">🟠 4~5월</span></td>
-          <td><span class="tl-type tl-type-op">운전</span></td>
-          <td><span class="tl-name">소진공 일반경영안정자금</span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc" target="_blank">🟢 소진공 안내</a><a class="tl-link tl-link-doc" href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1064354&parentSeq=1064354" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://ols.semas.or.kr/" target="_blank">💻 온라인신청</a></div></td>
-          <td class="tl-amt">7천만원</td>
-          <td style="font-size:.78rem;color:#e67e22;font-weight:600">수시접수<br>(예산 여유시)</td>
-          <td class="tl-action"><strong>소진공 온라인(ols.semas.or.kr) → 일반경영안정 선택 → 비대면 신청</strong><br>4·6순위 대비 보완 자금. 업력 무관. 변동금리 주의<span class="tl-phone">📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a></span></td>
-        </tr>
-        <!-- 계획 (5~6월) -->
-        <tr class="tl-row">
-          <td style="color:#f1c40f;font-size:1.1rem">8</td>
-          <td><span class="tl-urg tl-urg-yellow">🟡 5~6월</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">중진공 창업기반지원자금</span><div class="tl-sub">중소벤처기업진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.kosmes.or.kr/dh/map/main.do" target="_blank">🟢 중진공 신청</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941" target="_blank">📋 융자공고</a><a class="tl-link tl-link-gov" href="https://www.k-startup.go.kr/" target="_blank">🚀 K-Startup</a></div></td>
-          <td class="tl-amt">연간 5억</td>
-          <td style="font-size:.78rem;color:#f1c40f;font-weight:600">5월 접수 예상<br>(3분기 배치)</td>
-          <td class="tl-action"><strong>5월 접수 전 시설투자계획서 사전 준비 → 설비 견적서 확보</strong><br>냉동·물류 설비 계획 구체화. 매출 15억 실적으로 한도 5억 타겟<span class="tl-phone">📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#f1c40f;font-size:1.1rem">9</td>
-          <td><span class="tl-urg tl-urg-yellow">🟡 5~6월</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">스마트상점 기술보급 <span class="new-badge">NEW</span></span><div class="tl-sub">소상공인시장진흥공단</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.sbiz.or.kr/smst/index.do" target="_blank">🟢 스마트상점</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117079" target="_blank">📋 공급기업공고</a><a class="tl-link tl-link-news" href="https://www.sbiz.or.kr/smst/bbs/view.do?key=2111306039167&bbsSn=9674" target="_blank">📰 공지사항</a></div></td>
-          <td class="tl-amt">450만원<br>(정부90%)</td>
-          <td style="font-size:.78rem;color:#f1c40f;font-weight:600">2차 모집 대기<br>(1차: 3/13~4/1)</td>
-          <td class="tl-action"><strong>스마트상점 누리집(sbiz.or.kr/smst) 즐겨찾기 → 2차 공고 알림 설정</strong><br>1차 마감(4/1). 2차 추가모집 5~6월 예상. 스마트POS+재고관리 도입 계획 사전 준비<span class="tl-phone">📞 스마트상점팀: <a href="tel:0423636821" style="color:inherit;text-decoration:underline">042-363-6821</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#f1c40f;font-size:1.1rem">10</td>
-          <td><span class="tl-urg tl-urg-yellow">🟡 5~6월</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">수산발전기금 (수산정책자금)</span><div class="tl-sub">해양수산부 / 수협은행</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://suhyup-bank.com/" target="_blank">🟢 수협은행</a><a class="tl-link tl-link-doc" href="https://search.naver.com/search.naver?query=%EC%88%98%EC%82%B0%EB%B0%9C%EC%A0%84%EA%B8%B0%EA%B8%88+%EC%82%AC%EC%97%85%EC%A7%91%ED%96%89%EC%A7%80%EC%B9%A8" target="_blank">📋 집행지침</a><a class="tl-link tl-link-news" href="https://www.law.go.kr/" target="_blank">⚖️ 법령정보</a></div></td>
-          <td class="tl-amt">최대 15억</td>
-          <td style="font-size:.78rem;color:#f1c40f;font-weight:600">수산업경영인<br>선발 후 연계</td>
-          <td class="tl-action"><strong>수협은행 완도지점 방문 → 수산업경영인 선발 신청 → 우대금리 연계</strong><br>경영인 선발 시 1.0% 초저리. 6월 업력 3년 달성 후 유리<span class="tl-phone">📞 수협 완도: <a href="tel:0615529651" style="color:inherit;text-decoration:underline">061-552-9651</a></span></td>
-        </tr>
-        <!-- 여유 (하반기) -->
-        <tr class="tl-row">
-          <td style="color:#27ae60;font-size:1.1rem">11</td>
-          <td><span class="tl-urg tl-urg-green">🟢 하반기</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">귀어 창업 및 주택구입 지원</span><div class="tl-sub">해양수산부</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.gov.kr/portal/service/serviceInfo/119200000012?Mcode=20750" target="_blank">🟢 정부24 안내</a><a class="tl-link tl-link-gov" href="https://www.sealife.go.kr/" target="_blank">🐟 귀어귀촌센터</a></div></td>
-          <td class="tl-amt">창업 3억<br>주택 7,500만</td>
-          <td style="font-size:.78rem;color:#27ae60;font-weight:600">연중<br>(지자체 수산과)</td>
-          <td class="tl-action">완도군 수산정책과에 귀어인 요건 확인 → 해당 시 융자 신청<span class="tl-phone">📞 귀어센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#27ae60;font-size:1.1rem">12</td>
-          <td><span class="tl-urg tl-urg-green">🟢 하반기</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">소상공인 DX 디지털전환 지원</span><div class="tl-sub">전남도 / 중기부</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064370&parentSeq=1064370" target="_blank">🟢 중기부 공고</a><a class="tl-link tl-link-doc" href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117016" target="_blank">📋 통합공고</a></div></td>
-          <td class="tl-amt">보조금+융자</td>
-          <td style="font-size:.78rem;color:#27ae60;font-weight:600">연중<br>(AX 전환 계획 필요)</td>
-          <td class="tl-action">AI 수급예측·재고관리 시스템 도입 계획서 작성 후 신청. 중진공 AX 우대 연계<span class="tl-phone">📞 중기부: 1357</span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#27ae60;font-size:1.1rem">13</td>
-          <td><span class="tl-urg tl-urg-green">🟢 하반기</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">전남 육성자금 (창업형)</span><div class="tl-sub">전라남도</div><div class="tl-links"><a class="tl-link tl-link-gov" href="https://www.jnsinbo.or.kr/" target="_blank">🟢 전남신보</a><a class="tl-link tl-link-news" href="https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/" target="_blank">📰 22개시군비교</a></div></td>
-          <td class="tl-amt">최대 1억</td>
-          <td style="font-size:.78rem;color:#27ae60;font-weight:600">연중<br>(전남신보)</td>
-          <td class="tl-action">8순위 시설자금 승인 후 추가 설비 확충용으로 활용<span class="tl-phone">📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a></span></td>
-        </tr>
-        <tr class="tl-row">
-          <td style="color:#27ae60;font-size:1.1rem">14</td>
-          <td><span class="tl-urg tl-urg-green">🟢 하반기</span></td>
-          <td><span class="tl-type tl-type-fac">시설</span></td>
-          <td><span class="tl-name">완도군 어촌 신활력 증진 <span class="new-badge">NEW</span></span><div class="tl-sub">해양수산부 / 완도군</div><div class="tl-links"><a class="tl-link tl-link-local" href="https://www.wando.go.kr/" target="_blank">🏛️ 완도군청</a><a class="tl-link tl-link-news" href="https://go.seoul.co.kr/news/newsView.php?id=20251106500180" target="_blank">📰 선정보도</a><a class="tl-link tl-link-gov" href="https://www.bizinfo.go.kr/" target="_blank">📋 기업마당</a></div></td>
-          <td class="tl-amt">100억(지역)</td>
-          <td style="font-size:.78rem;color:#27ae60;font-weight:600">2026~2030<br>(장기사업)</td>
-          <td class="tl-action">완도군 해양수산과에 연계사업 참여 의사 전달. 수산인프라 활용 계획 사전 협의<span class="tl-phone">📞 완도군 해양수산과: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a></span></td>
-        </tr>
-      </tbody>
+      <tbody id="tlBody"></tbody>
     </table>
     </div>
 
-    <!-- 이번 주 할 일 요약 -->
-    <div style="background:linear-gradient(135deg,rgba(231,76,60,.12),rgba(244,164,43,.08));border:2px solid rgba(231,76,60,.35);border-radius:14px;padding:22px 26px;margin-top:24px">
-      <div style="font-size:.95rem;font-weight:800;color:var(--red);margin-bottom:12px">🚨 이번 주 즉시 실행 체크리스트 (4월 2주차)</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
-        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--red)">
-          <div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:6px">📞 월요일 — 전화 3건</div>
-          <div style="font-size:.76rem;color:var(--muted);line-height:1.8">
-            ① 중진공 전남본부 <a href="tel:0612802600" style="color:var(--teal);font-weight:700;text-decoration:underline">061-280-2600</a> → 상담 예약<br>
-            ② 완도군 수산정책과 <a href="tel:0615505393" style="color:var(--teal);font-weight:700;text-decoration:underline">061-550-5393</a> → 어촌정착 마감일 확인<br>
-            ③ 완도군 경제교통과 <a href="tel:0615505491" style="color:var(--teal);font-weight:700;text-decoration:underline">061-550-5491</a> → 이차보전 잔여예산 확인
-          </div>
-        </div>
-        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--gold)">
-          <div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:6px">💻 화~수요일 — 온라인 신청 2건</div>
-          <div style="font-size:.76rem;color:var(--muted);line-height:1.8">
-            ④ 소진공 <strong style="color:var(--teal)">ols.semas.or.kr</strong> → 청년고용연계자금 비대면 신청<br>
-            ⑤ 소상공인24 <strong style="color:var(--teal)">sbiz24.kr</strong> → AI 바우처 신청
-          </div>
-        </div>
-        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--green)">
-          <div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:6px">📋 목~금요일 — 서류 준비</div>
-          <div style="font-size:.76rem;color:var(--muted);line-height:1.8">
-            ⑥ 사업자등록증명원 + 소상공인확인서 발급<br>
-            ⑦ 국세·지방세 납세증명 발급<br>
-            ⑧ 2025년 매출 증빙자료 (15억) 정리
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="weeklyChecklist"></div>
   </div>
 </section>
 
@@ -1051,7 +909,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
         <div class="fmeta"><div class="fmeta-label">상환</div><div class="fmeta-value">2년 거치 3년</div></div>
       </div>
       <div class="fund-tags">
-        <span class="ftag ftag-new">🔥 2026 4월 접수중</span>
+        <span class="ftag ftag-new">🔥 2026 접수중</span>
         <span class="ftag ftag-ok">만 39세 이하 ✓</span>
         <span class="ftag ftag-ok">소상공인 ✓</span>
         <span class="ftag ftag-blue">비수도권 0.2%p 우대</span>
@@ -1300,7 +1158,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
       <div class="algo-rule"><span class="cond">IF (AX 도입 계획) AND (비수도권)</span><br>→ <span class="result">DX 전환 지원 + 중진공 AX 우대 결합</span></div>
     </div>
     <div class="algo-box">
-      <div class="algo-header">🆕 2026.04 신규 매칭 로직</div>
+      <div class="algo-header">🆕 2026.04.28 최신 매칭 로직</div>
       <div class="algo-rule"><span class="cond">IF (나이&lt;39) AND (소상공인) AND (비수도권)</span><br>→ <span class="result">청년고용연계자금 7천만원 + 금리 0.2%p 우대</span></div>
       <div class="algo-rule"><span class="cond">IF (소상공인) AND (AI시스템 도입 계획)</span><br>→ <span class="result">AI바우처 500만원 + 스마트상점 450만원 병행</span></div>
       <div class="algo-rule"><span class="cond">IF (완도군) AND (수산업)</span><br>→ <span class="result">어촌 신활력 100억 연계사업 참여</span></div>
@@ -1369,7 +1227,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
       <div class="note-icon road">🗺️</div>
       <div class="note-content">
         <h4>③ 로드맵</h4>
-        <p>"4월 업데이트로 <strong>청년고용연계자금·AI바우처·스마트상점 보조금</strong>이 추가되었습니다. 대표님 연령(만 31세)만으로 청년고용연계 7천만원이 바로 신청 가능하고, AI바우처 500만원+스마트상점 450만원은 상환 없는 보조금입니다. 재무제표 등록 + 직원 1명 채용까지 하시면 <strong>총 운전+시설 자금이 12억 이상</strong> 열립니다."</p>
+        <p>"위 <strong>'신청 긴급도 순위표'는 오늘 날짜 기준으로 매일 자동 갱신</strong>됩니다. 🔴 즉시 항목(수시·선착순)부터 전화 상담을 예약하고, 🟠 임박 항목은 마감(D-day) 전 서류를 준비하세요. 특히 <strong>업력 3년 달성(6/15)</strong> 직후 수산발전기금 경영인 선발을 신청하면 1%대 초저리로 최대 15억 시설자금이 열립니다. 재무제표 등록 + 직원 1명 채용까지 더하면 <strong>총 운전+시설 자금이 12억 이상</strong> 확보 가능합니다."</p>
       </div>
     </div>
   </div>
@@ -1540,18 +1398,257 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 </section>
 
 <footer>
-  <p>📋 청산도수산 정책자금 컨설팅 리포트 | 작성: 2026년 3월 18일 | 방문 상담: 2026년 3월 19일 | <strong style="color:var(--red)">업데이트: 2026년 4월 8일 (신규 4건 추가)</strong></p>
+  <p>📋 청산도수산 정책자금 컨설팅 리포트 | 작성: 2026년 3월 18일 | 방문 상담: 2026년 3월 19일 | <strong style="color:var(--red)" id="footerUpdate">매일 자동 최신화 · D-day 실시간 계산</strong></p>
   <p style="margin-top:5px">본 자료는 컨설팅 참고용이며, 실제 신청 시 각 기관의 최신 공고를 반드시 확인하시기 바랍니다.</p>
-  <p style="margin-top:10px;padding:10px 16px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);border-radius:8px;display:inline-block">
-    📱 <strong style="color:var(--green)">모바일 공유 링크</strong>&ensp;
+  <p style="margin-top:10px;padding:14px 18px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);border-radius:10px;display:inline-block;text-align:center">
+    📱 <strong style="color:var(--green);font-size:.92rem">모바일 공유 링크 (Netlify · 자동 SSL)</strong><br>
+    <a href="https://cs-susan-73391.netlify.app/" target="_blank"
+       style="color:var(--teal);text-decoration:underline;font-weight:700;font-size:.95rem;display:inline-block;margin-top:6px">
+      🔗 cs-susan-73391.netlify.app</a><br>
     <a href="https://t01066442222.github.io/cheongsando-susan/" target="_blank"
-       style="color:var(--teal);text-decoration:underline;font-weight:600;font-size:.82rem">
-      t01066442222.github.io/cheongsando-susan</a>
-    <span style="display:block;margin-top:4px;font-size:.7rem;color:var(--muted)">↑ 이 링크를 카톡·문자로 공유하면 핸드폰에서 바로 열람 가능합니다</span>
+       style="color:var(--muted);text-decoration:underline;font-weight:500;font-size:.74rem">
+      (예비 GitHub Pages: t01066442222.github.io/cheongsando-susan)</a>
+    <span style="display:block;margin-top:6px;font-size:.7rem;color:var(--muted)">↑ 카톡·문자로 공유 → 핸드폰에서 바로 열람 가능 (오늘 날짜 자동 갱신)</span>
   </p>
 </footer>
 
 <script>
+/* =================================================================
+   FUND_DATA_START  ·  일일 자동 갱신 영역 (이 블록만 봇이 수정)
+   - status: 'fixed'|'window'|'rolling'|'always'|'estimated'  (deadline는 ISO 'YYYY-MM-DD')
+   - hint  : rolling/always 의 긴급도 → 'now'|'soon'|'relaxed'
+   - D-day·긴급도·정렬·알림·체크리스트는 아래 데이터로부터 매 열람 시 자동 계산됨
+   ================================================================= */
+const META = {
+  company: '청산도수산',
+  dataUpdated: '2026-06-01',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
+  milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 수산업경영인 선발 신청 적기' }
+};
+
+const FUNDS = [
+  { id:'kosmes-youth', rank:1, cat:'op', name:'중진공 청년전용창업자금', org:'중소벤처기업진흥공단',
+    amount:'최대 2억', status:'rolling', deadline:null, hint:'now',
+    when:'수시접수<br>매월 전월말 신청',
+    links:[{c:'gov',u:'https://www.kosmes.or.kr/dh/map/main.do',t:'🟢 중진공 신청'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941',t:'📋 융자공고'},{c:'news',u:'https://digital.kosmes.or.kr/nsh/SH/SBI/SHSBI099M0.do',t:'📅 접수일정'}],
+    action:'<strong>중진공 전남본부에 전화 → 상담 예약 → 다음 달 배치 심사 진입.</strong> 청년전용은 수시접수(전월말 신청→당월 자금). 매출 15억 실적이 핵심 근거 — 승인확률 95%, 연 2.5% 고정.',
+    phone:'📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a>' },
+
+  { id:'young-fisher', rank:2, cat:'grant', name:'청년어촌정착지원사업', org:'해양수산부 / 귀어귀촌종합센터', isNew:false,
+    amount:'월110→100→90만<br>(3년)', status:'rolling', deadline:null, hint:'soon',
+    when:'지역별 상시모집<br>완도군 일정 확인',
+    links:[{c:'gov',u:'https://www.sealife.go.kr/policy/policy2.do',t:'🟢 귀어귀촌센터'},{c:'doc',u:'https://www.gov.kr/portal/rcvfvrSvc/dtlEx/119200000002',t:'📋 보조금24'},{c:'local',u:'https://www.wando.go.kr/wando/sub.cs?m=1019',t:'🏛️ 완도군 공고'}],
+    action:'<strong>완도군청 수산정책과에 전화 → 올해 모집 회차·마감일 확인 → 마감 전 접수.</strong> 만40세 미만·수산업 3년 이하 충족. 상환 의무 없는 보조금 — 최우선 확보 대상(1년차 월110만).',
+    phone:'📞 귀어귀촌센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a> | 완도군 수산: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a>' },
+
+  { id:'wando-rate', rank:3, cat:'op', name:'완도군 소상공인 이차보전', org:'완도군청 (연 9억 예산)',
+    amount:'이자 3%<br>지원', status:'rolling', deadline:null, hint:'now',
+    when:'선착순<br>잔여예산 확인 필수',
+    links:[{c:'local',u:'https://www.wando.go.kr/',t:'🏛️ 완도군청'},{c:'news',u:'https://search.naver.com/search.naver?where=news&query=%EC%99%84%EB%8F%84%EA%B5%B0+9%EC%96%B5+%ED%88%AC%EC%9E%85+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%A7%80%EC%9B%90',t:'📰 관련뉴스'}],
+    action:'<strong>완도군청 경제교통과 방문 → 잔여예산 확인 → 협약은행(신한·농협 등) 대출 신청.</strong> 예산 선착순 소진형. 1순위 중진공과 결합 시 실질금리 0%대 달성.',
+    phone:'📞 완도군 경제교통과: <a href="tel:0615505491" style="color:inherit;text-decoration:underline">061-550-5491</a>' },
+
+  { id:'semas-youth-emp', rank:4, cat:'op', name:'청년고용연계자금', org:'소상공인시장진흥공단', isNew:true,
+    amount:'7천만원', status:'rolling', deadline:null, hint:'soon',
+    when:'연중 접수<br>예산 집행중',
+    links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021',t:'📋 융자공고'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
+    action:'<strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 → 비대면 신청.</strong> 대표 만31세로 종업원 채용 없이 자격 충족. 비수도권 0.2%p 우대. 예산 소진 전 신청.',
+    phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
+
+  { id:'ai-voucher', rank:5, cat:'grant', name:'소상공인 AI 활용 바우처', org:'중소벤처기업부 (2026 신규)', isNew:true,
+    amount:'500만원', status:'rolling', deadline:null, hint:'soon',
+    when:'2026 통합공고<br>모집회차 확인',
+    links:[{c:'gov',u:'https://www.sbiz.or.kr/',t:'🟢 소상공인24'},{c:'doc',u:'https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117016',t:'📋 통합공고'},{c:'news',u:'https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064370&parentSeq=1064370',t:'📰 디지털전환 공고'}],
+    action:'<strong>소상공인24(sbiz.or.kr)에서 AI 바우처 모집공고 확인 → 즉시 신청.</strong> AI 수급예측·재고관리 시스템 도입. 비상환 보조금(자부담 10~20%).',
+    phone:'📞 중기부 콜센터: 1357' },
+
+  { id:'jn-fund', rank:6, cat:'op', name:'전남 소상공인 육성자금', org:'전라남도 / 전남신용보증재단',
+    amount:'최대 2억', status:'rolling', deadline:null, hint:'soon',
+    when:'연중<br>전남신보 경유',
+    links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://search.naver.com/search.naver?query=%EC%A0%84%EB%82%A8+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%9C%A1%EC%84%B1%EC%9E%90%EA%B8%88+%EC%A7%80%EC%9B%90',t:'📰 안내검색'}],
+    action:'<strong>전남신보 완도지점 방문 → 보증서 발급 → 협약은행 대출.</strong> 도 이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금.',
+    phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 완도지점: <a href="tel:0615555011" style="color:inherit;text-decoration:underline">061-555-5011</a>' },
+
+  { id:'semas-general', rank:7, cat:'op', name:'소진공 일반경영안정자금', org:'소상공인시장진흥공단',
+    amount:'7천만원', status:'rolling', deadline:null, hint:'relaxed',
+    when:'연중<br>예산 여유시',
+    links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
+    action:'소진공 온라인(ols.semas.or.kr) → 일반경영안정 선택 → 비대면 신청. 업력 무관 보완 자금. 변동금리 주의.',
+    phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
+
+  { id:'kosmes-startup', rank:8, cat:'fac', name:'중진공 창업기반지원자금', org:'중소벤처기업진흥공단',
+    amount:'연간 5억', status:'rolling', deadline:null, hint:'soon',
+    when:'수시접수<br>매월 배치',
+    links:[{c:'gov',u:'https://www.kosmes.or.kr/dh/map/main.do',t:'🟢 중진공 신청'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941',t:'📋 융자공고'},{c:'gov',u:'https://www.k-startup.go.kr/',t:'🚀 K-Startup'}],
+    action:'<strong>시설투자계획서 + 설비 견적서 3개사 이상 확보 → 다음 달 배치 접수.</strong> 냉동·물류 설비 구체화, 매출 15억 실적으로 한도 5억 타겟. 업력 7년 미만 대상.',
+    phone:'📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a>' },
+
+  { id:'smart-store', rank:9, cat:'fac', name:'스마트상점 기술보급', org:'소상공인시장진흥공단', isNew:true,
+    amount:'최대 700만<br>(배리어프리)', status:'rolling', deadline:null, hint:'soon',
+    when:'수요기업 연중<br>누리집 확인',
+    links:[{c:'gov',u:'https://www.sbiz.or.kr/smst/index.do',t:'🟢 스마트상점'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117079',t:'📋 공고문'},{c:'news',u:'https://www.sbiz.or.kr/smst/bbs/view.do?key=2111306039167&bbsSn=9674',t:'📰 공지사항'}],
+    action:'<strong>스마트상점 누리집(sbiz.or.kr/smst)에서 수요기업 신청 → 스마트POS·재고관리 도입.</strong> 배리어프리 한도 700만 상향, 렌탈·SW형 최대 2년 지원.',
+    phone:'📞 스마트상점팀: <a href="tel:0423636821" style="color:inherit;text-decoration:underline">042-363-6821</a>' },
+
+  { id:'fisheries-fund', rank:10, cat:'fac', name:'수산발전기금 (수산정책자금)', org:'해양수산부 / 수협은행',
+    amount:'최대 15억', status:'milestone', deadline:'2026-06-15', hint:null,
+    when:'업력 3년 달성 후<br>경영인 선발 연계',
+    links:[{c:'gov',u:'https://suhyup-bank.com/',t:'🟢 수협은행'},{c:'doc',u:'https://search.naver.com/search.naver?query=%EC%88%98%EC%82%B0%EB%B0%9C%EC%A0%84%EA%B8%B0%EA%B8%88+%EC%82%AC%EC%97%85%EC%A7%91%ED%96%89%EC%A7%80%EC%B9%A8',t:'📋 집행지침'},{c:'news',u:'https://www.law.go.kr/',t:'⚖️ 법령정보'}],
+    action:'<strong>수협은행 완도지점 사전상담 → 6/15 업력 3년 달성 직후 수산업경영인 선발 신청.</strong> 경영인 선발 시 1.0% 초저리 이차보전, 한도 최대 15억 — 전체 중 최대 금액.',
+    phone:'📞 수협 완도: <a href="tel:0615529651" style="color:inherit;text-decoration:underline">061-552-9651</a>' },
+
+  { id:'return-fisher', rank:11, cat:'fac', name:'귀어 창업 및 주택구입 지원', org:'해양수산부 / 귀어귀촌종합센터',
+    amount:'창업 3억<br>주택 7,500만', status:'always', deadline:null, hint:'relaxed',
+    when:'연중 상시<br>지자체 수산과',
+    links:[{c:'gov',u:'https://www.gov.kr/portal/service/serviceInfo/119200000012?Mcode=20750',t:'🟢 정부24 안내'},{c:'gov',u:'https://www.sealife.go.kr/',t:'🐟 귀어귀촌센터'}],
+    action:'완도군 수산정책과에 귀어인 요건 확인 → 해당 시 창업+주택 융자 신청(1.5% 이차보전). 유통설비+거주안정 동시 해결.',
+    phone:'📞 귀어센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a>' },
+
+  { id:'dx-support', rank:12, cat:'fac', name:'소상공인 DX 디지털전환 지원', org:'전남도 / 중기부',
+    amount:'보조금+융자', status:'always', deadline:null, hint:'relaxed',
+    when:'연중<br>AX 전환계획 필요',
+    links:[{c:'gov',u:'https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064370&parentSeq=1064370',t:'🟢 중기부 공고'},{c:'doc',u:'https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117016',t:'📋 통합공고'}],
+    action:'AI 수급예측·재고관리 시스템 도입 계획서 작성 후 신청. 중진공 AX 우대와 연계.',
+    phone:'📞 중기부: 1357' },
+
+  { id:'jn-startup', rank:13, cat:'fac', name:'전남 육성자금 (창업형)', org:'전라남도',
+    amount:'최대 1억', status:'always', deadline:null, hint:'relaxed',
+    when:'연중<br>전남신보',
+    links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/',t:'📰 22개시군비교'}],
+    action:'8순위 시설자금 승인 후 추가 설비 확충용으로 활용.',
+    phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a>' },
+
+  { id:'wando-revital', rank:14, cat:'fac', name:'완도군 어촌 신활력 증진', org:'해양수산부 / 완도군', isNew:true,
+    amount:'100억(지역)', status:'always', deadline:null, hint:'relaxed',
+    when:'2026~2030<br>장기사업',
+    links:[{c:'local',u:'https://www.wando.go.kr/',t:'🏛️ 완도군청'},{c:'news',u:'https://go.seoul.co.kr/news/newsView.php?id=20251106500180',t:'📰 선정보도'},{c:'gov',u:'https://www.bizinfo.go.kr/',t:'📋 기업마당'}],
+    action:'완도군 해양수산과에 연계사업 참여 의사 전달. 수산인프라 활용 계획 사전 협의.',
+    phone:'📞 완도군 해양수산과: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a>' }
+];
+/* =================================================================
+   FUND_DATA_END
+   ================================================================= */
+
+/* ---------- 날짜/긴급도 계산 엔진 (열람 시마다 실행) ---------- */
+function _today(){ const n=new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+function _pd(s){ const a=s.split('-').map(Number); return new Date(a[0], a[1]-1, a[2]); }
+function _dday(f, t){
+  if(f.status==='rolling' || f.status==='always' || !f.deadline) return null;
+  return Math.round((_pd(f.deadline)-t)/86400000);
+}
+function _tier(f, dd){
+  if(f.status==='rolling' || f.status==='always') return ({now:'red', soon:'orange', relaxed:'green'})[f.hint||'relaxed'];
+  if(f.status==='milestone'){            // 이정표(업력달성 등): 지나도 마감 아님 → 도달 시 즉시신청
+    if(dd===null) return 'orange';
+    if(dd<0)  return 'orange';
+    if(dd<=7) return 'red';
+    if(dd<=30) return 'orange';
+    return 'yellow';
+  }
+  if(dd===null) return 'yellow';
+  if(dd<0)  return 'closed';
+  if(dd<=7) return 'red';
+  if(dd<=21) return 'orange';
+  if(dd<=45) return 'yellow';
+  return 'green';
+}
+const TIER = {
+  red:   {c:'#e74c3c', u:'tl-urg-red',    lbl:'🔴 즉시', ord:0},
+  orange:{c:'#e67e22', u:'tl-urg-orange', lbl:'🟠 임박', ord:1},
+  yellow:{c:'#f1c40f', u:'tl-urg-yellow', lbl:'🟡 준비', ord:2},
+  green: {c:'#27ae60', u:'tl-urg-green',  lbl:'🟢 여유', ord:3},
+  closed:{c:'#7f8c8d', u:'tl-urg-green',  lbl:'⚪ 마감', ord:4}
+};
+const TYPE = { op:{c:'tl-type-op',l:'운전'}, fac:{c:'tl-type-fac',l:'시설'}, grant:{c:'tl-type-grant',l:'보조'} };
+
+function computeRows(){
+  const t=_today();
+  const rows=FUNDS.map(f=>{ const dd=_dday(f,t); return {f, dd, tr:_tier(f,dd)}; });
+  rows.sort((a,b)=> TIER[a.tr].ord-TIER[b.tr].ord || ((a.dd==null?999:a.dd)-(b.dd==null?999:b.dd)) || (a.f.rank-b.f.rank));
+  return rows;
+}
+
+function renderTimeline(rows){
+  const html=rows.map((r,i)=>{
+    const tm=TIER[r.tr], ty=TYPE[r.f.cat];
+    let when=r.f.when;
+    if(r.dd!==null && r.dd>=0){ const dt=_pd(r.f.deadline); when += `<br><strong>D-${r.dd} (${dt.getMonth()+1}/${dt.getDate()})</strong>`; }
+    else if(r.f.status==='milestone' && r.dd!==null && r.dd<0){ when += `<br><strong style="color:#27ae60">달성 완료 · 즉시 신청 가능</strong>`; }
+    const links=r.f.links.map(l=>`<a class="tl-link tl-link-${l.c}" href="${l.u}" target="_blank">${l.t}</a>`).join('');
+    const nb=r.f.isNew?' <span class="new-badge">NEW</span>':'';
+    return `<tr class="tl-row">`+
+      `<td style="color:${tm.c};font-size:1.1rem">${i+1}</td>`+
+      `<td><span class="tl-urg ${tm.u}">${tm.lbl}</span></td>`+
+      `<td><span class="tl-type ${ty.c}">${ty.l}</span></td>`+
+      `<td><span class="tl-name">${r.f.name}${nb}</span><div class="tl-sub">${r.f.org}</div><div class="tl-links">${links}</div></td>`+
+      `<td class="tl-amt">${r.f.amount}</td>`+
+      `<td style="font-size:.78rem;color:${tm.c};font-weight:700">${when}</td>`+
+      `<td class="tl-action">${r.f.action}<span class="tl-phone">${r.f.phone}</span></td>`+
+    `</tr>`;
+  }).join('');
+  const el=document.getElementById('tlBody'); if(el) el.innerHTML=html;
+}
+
+function renderAlert(rows){
+  const el=document.getElementById('alertText'); if(!el) return;
+  const reds=rows.filter(r=>r.tr==='red');
+  const oranges=rows.filter(r=>r.tr==='orange');
+  const circ='①②③④⑤⑥⑦⑧⑨';
+  const redList=reds.map((r,i)=>`${circ[i]||'·'} <strong>${r.f.name}</strong>`).join('  ');
+  let note='';
+  const ms=rows.find(r=>r.f.id===(META.milestone&&META.milestone.fundId));
+  if(ms && ms.dd!==null && ms.dd>=0 && ms.dd<=30){ note=`수산발전기금: <strong>업력 3년 달성 D-${ms.dd}(6/15)</strong> — 수산업경영인 선발 신청 준비. `; }
+  const t=_today();
+  const dateLong=`${t.getFullYear()}년 ${t.getMonth()+1}월 ${t.getDate()}일`;
+  el.innerHTML =
+    `<div class="alert-date">⏰ ${dateLong} 기준 · 실시간 긴급도 점검</div>`+
+    `<strong>즉시 대응 ${reds.length}건</strong> · 임박 ${oranges.length}건. ${reds.length? '오늘 우선: '+redList+'.':''}<br>`+
+    `⚠️ ${note}${META.rateNote}.`;
+}
+
+function renderChecklist(rows){
+  const el=document.getElementById('weeklyChecklist'); if(!el) return;
+  const reds=rows.filter(r=>r.tr==='red');
+  const urgent=rows.filter(r=>r.tr==='red'||r.tr==='orange');
+  const callItems = (reds.length?reds:urgent).slice(0,4).map(r=>
+    `<div style="margin-bottom:6px">▶ <strong style="color:var(--text)">${r.f.name}</strong><br><span style="font-size:.72rem">${r.f.phone}</span></div>`).join('') || '<div>긴급 전화 대상 없음</div>';
+  const onlineItems = urgent.map(r=>{ const g=r.f.links.find(l=>l.c==='gov'); return g?`<div style="margin-bottom:5px">▶ ${r.f.name} → <a href="${g.u}" target="_blank" style="color:var(--teal);font-weight:600;text-decoration:underline">${g.t.replace(/^[^ ]+ /,'')}</a></div>`:'';}).filter(Boolean).slice(0,5).join('');
+  el.innerHTML =
+    `<div style="background:linear-gradient(135deg,rgba(231,76,60,.12),rgba(244,164,43,.08));border:2px solid rgba(231,76,60,.35);border-radius:14px;padding:22px 26px;margin-top:24px">`+
+      `<div style="font-size:.95rem;font-weight:800;color:var(--red);margin-bottom:12px">🚨 이번 주 즉시 실행 체크리스트 <span style="font-size:.7rem;color:var(--muted);font-weight:600">(긴급도 자동 반영)</span></div>`+
+      `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">`+
+        `<div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--red)">`+
+          `<div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:8px">📞 긴급 전화 — 즉시 대응 공고</div>`+
+          `<div style="font-size:.76rem;color:var(--muted);line-height:1.7">${callItems}</div></div>`+
+        `<div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--gold)">`+
+          `<div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:8px">💻 온라인 신청 — 마감 전 진입</div>`+
+          `<div style="font-size:.76rem;color:var(--muted);line-height:1.8">${onlineItems}</div></div>`+
+        `<div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;border-left:4px solid var(--green)">`+
+          `<div style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:8px">📋 공통 서류 정비</div>`+
+          `<div style="font-size:.76rem;color:var(--muted);line-height:1.8">▶ 사업자등록증명원 + 소상공인확인서<br>▶ 국세·지방세 납세증명(3개월 이내)<br>▶ 2025년 매출 증빙(15억) + 표준재무제표<br>▶ 시설투자계획서 + 설비 견적서 3개사</div></div>`+
+      `</div></div>`;
+}
+
+function renderDates(){
+  const t=_today();
+  const days=['일','월','화','수','목','금','토'];
+  const m=t.getMonth()+1, d=t.getDate();
+  const td=document.getElementById('todayDate');
+  if(td) td.textContent=`${t.getFullYear()}년 ${m}월 ${d}일 (${days[t.getDay()]}요일)`;
+  const cf=document.getElementById('todayConfirm');
+  if(cf){
+    const dow=t.getDay();
+    let ctx='✓ 정책자금 현황 실시간 확인';
+    if(dow===0||dow===6) ctx='⚠️ 주말 — 다음 영업일 신청 준비';
+    else if(d>=25) ctx='🚨 월말 — 다음 달 배치 신청 마감 임박';
+    else if(d<=5) ctx='🔥 월초 — 이번 달 자금 신청 적기';
+    cf.textContent=ctx;
+  }
+  const du=(META.dataUpdated||'').replace(/-/g,'.');
+  const nu=document.getElementById('navUpdateDate'); if(nu) nu.textContent='데이터 갱신: '+du;
+  const fu=document.getElementById('footerUpdate'); if(fu) fu.textContent='데이터 갱신: '+du+' · 매일 자동 최신화 · D-day 실시간 계산';
+  const pr=document.getElementById('priorityDate'); if(pr) pr.textContent=`(${t.getFullYear()}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')} 기준 · 실시간 D-day)`;
+}
 
 function switchTab(t){
   document.getElementById('tab-op').classList.remove('active');
@@ -1563,7 +1660,18 @@ function switchTab(t){
   opBtn.className='tab-btn'+(t==='op'?' active-op':'');
   facBtn.className='tab-btn'+(t==='fac'?' active-fac':'');
 }
+
+function renderAll(){
+  const rows=computeRows();
+  renderTimeline(rows);
+  renderAlert(rows);
+  renderChecklist(rows);
+  renderDates();
+}
+renderAll();
+
 window.addEventListener('load',()=>{
+  renderAll();
   document.querySelectorAll('.pb-fill').forEach(b=>{
     const w=b.style.width;b.style.width='0';
     setTimeout(()=>{b.style.width=w;},600);

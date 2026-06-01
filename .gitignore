@@ -1,0 +1,4 @@
+*.bak
+index.html.*.bak
+update.log
+node_modules/
