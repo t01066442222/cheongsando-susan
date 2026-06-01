@@ -28,7 +28,7 @@
 
 반영 기준:
 - **새로 열린/마감 임박 공고**: deadline 을 실제 마감일('YYYY-MM-DD')로, status 'date'(또는 접수기간이면 'window'+start) 로 설정. 곧 마감이면 자연히 🔴/🟠 로 계산된다.
-- **마감·종료된 공고**: 후속 회차가 있으면 그 일정으로 갱신, 완전 종료면 해당 항목을 FUNDS 에서 제거.
+- **★ 오늘부터 신청 가능한 공고만 포함한다.** 마감 지난 회차·종료된 공고는 FUNDS 에서 **제거**한다. 다음 회차 일정이 아직 미정인 '대기' 공고는 넣지 말고, 후속 회차의 **확정 접수일이 공고되면** 그때 status:'date'/'window' 로 추가한다.
 - **매월 신청 공고**(중진공 수시 등): status 'monthly'. **상시/연중 공고**: status 'always' + hint 로 긴급도 조정.
 - **청산도수산과 무관**해진 공고는 빼고, 새로 적합한 공고는 같은 형식으로 추가(rank 는 실질 금액·적합도 순).
 - amount/when/action/links 도 사실이 바뀌었으면 갱신. 출처는 공식 사이트(bizinfo.go.kr, kosmes.or.kr, semas.or.kr, sealife.go.kr, mof.go.kr, wando.go.kr, jnsinbo.or.kr) 우선.

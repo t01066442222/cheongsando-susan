@@ -754,7 +754,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
 <section style="padding-bottom:0">
   <div class="tl-wrap" style="padding:0">
     <div class="tl-header">
-      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 신청 긴급도 순위표 <span style="font-size:.7rem;color:var(--red);font-weight:600" id="priorityDate">(오늘 기준 · 실시간 D-day)</span></h3>
+      <h3 style="border-left:4px solid var(--teal);padding-left:14px">📅 오늘부터 신청 가능한 공고 — 마감일 순 <span style="font-size:.7rem;color:var(--red);font-weight:600" id="priorityDate">(오늘 기준 · 실시간 D-day)</span></h3>
       <div class="tl-legend">
         <span class="tl-leg tl-leg-red">🔴 즉시 (수시·선착순·D-7)</span>
         <span class="tl-leg tl-leg-orange">🟠 임박 (D-21 이내)</span>
@@ -767,8 +767,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
       <strong style="color:#e74c3c">📅 마감 YYYY.MM.DD + D-day</strong>: 확정 마감일(가장 정확) ·
       <strong style="color:#e67e22">🎯 달성예정</strong>: 업력 등 자격 충족일 ·
       <strong style="color:#e74c3c">🔥 선착순</strong>: 예산 소진 시 조기마감 ·
-      <strong style="color:#27ae60">🔓 상시</strong>: 확정 마감일 없음(연중) ·
-      <strong style="color:#f1c40f">🔔 다음 공고 대기</strong>: 직전 회차 마감, 후속 공고 예정. <span style="color:var(--text)">날짜·D-day는 매일 오늘 기준 자동 갱신.</span>
+      <strong style="color:#27ae60">🔓 상시</strong>: 확정 마감일 없음(연중·예산 소진 시 마감). <span style="color:var(--text)">지난 회차로 마감된 공고는 제외, 오늘부터 신청 가능한 것만 표시 — 날짜·D-day는 매일 자동 갱신.</span>
     </div>
     <div class="tl-table-wrap">
     <table class="tl-table">
@@ -786,6 +785,8 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
       <tbody id="tlBody"></tbody>
     </table>
     </div>
+
+    <div id="upcomingFunds"></div>
 
     <div id="weeklyChecklist"></div>
   </div>
@@ -1429,7 +1430,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-06-01',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-06-02',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 수산업경영인 선발 신청 적기' }
 };
@@ -1443,8 +1444,8 @@ const FUNDS = [
     phone:'📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a>' },
 
   { id:'young-fisher', rank:2, cat:'grant', name:'청년어촌정착지원사업', org:'해양수산부 / 귀어귀촌종합센터', isNew:false,
-    amount:'월110→100→90만<br>(3년)', status:'tbd', deadline:null, hint:'soon',
-    when:'완도군 수산정책과에 2026년 모집 회차·마감일 확인',
+    amount:'월110→100→90만<br>(3년)', status:'always', deadline:null, hint:'soon',
+    when:'2026 지역별 모집 진행 중 · 완도군 수산정책과 마감일 확인',
     links:[{c:'gov',u:'https://www.sealife.go.kr/policy/policy2.do',t:'🟢 귀어귀촌센터'},{c:'doc',u:'https://www.gov.kr/portal/rcvfvrSvc/dtlEx/119200000002',t:'📋 보조금24'},{c:'local',u:'https://www.wando.go.kr/wando/sub.cs?m=1019',t:'🏛️ 완도군 공고'}],
     action:'<strong>완도군청 수산정책과에 전화 → 올해 모집 회차·마감일 확인 → 마감 전 접수.</strong> 만40세 미만·수산업 3년 이하 충족. 상환 의무 없는 보조금 — 최우선 확보 대상(1년차 월110만).',
     phone:'📞 귀어귀촌센터: <a href="tel:18999597" style="color:inherit;text-decoration:underline">1899-9597</a> | 완도군 수산: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a>' },
@@ -1462,13 +1463,6 @@ const FUNDS = [
     links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021',t:'📋 융자공고'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
     action:'<strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 → 비대면 신청.</strong> 대표 만31세로 종업원 채용 없이 자격 충족. 비수도권 0.2%p 우대. 예산 소진 전 신청.',
     phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
-
-  { id:'ai-voucher', rank:5, cat:'grant', name:'소상공인 AI 활용 바우처', org:'중소벤처기업부 (2026 신규)', isNew:true,
-    amount:'500만원', status:'tbd', deadline:null, hint:'soon',
-    when:'직전 회차 마감 · 다음 회차는 소상공인24 공고 확인',
-    links:[{c:'gov',u:'https://www.sbiz.or.kr/',t:'🟢 소상공인24'},{c:'doc',u:'https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117016',t:'📋 통합공고'},{c:'news',u:'https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064370&parentSeq=1064370',t:'📰 디지털전환 공고'}],
-    action:'<strong>소상공인24(sbiz.or.kr)에서 AI 바우처 모집공고 확인 → 즉시 신청.</strong> AI 수급예측·재고관리 시스템 도입. 비상환 보조금(자부담 10~20%).',
-    phone:'📞 중기부 콜센터: 1357' },
 
   { id:'jn-fund', rank:6, cat:'op', name:'전남 소상공인 육성자금', org:'전라남도 / 전남신용보증재단',
     amount:'최대 2억', status:'always', deadline:null, hint:'soon',
@@ -1490,13 +1484,6 @@ const FUNDS = [
     links:[{c:'gov',u:'https://www.kosmes.or.kr/dh/map/main.do',t:'🟢 중진공 신청'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941',t:'📋 융자공고'},{c:'gov',u:'https://www.k-startup.go.kr/',t:'🚀 K-Startup'}],
     action:'<strong>시설투자계획서 + 설비 견적서 3개사 이상 확보 → 다음 달 배치 접수.</strong> 냉동·물류 설비 구체화, 매출 15억 실적으로 한도 5억 타겟. 업력 7년 미만 대상.',
     phone:'📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a>' },
-
-  { id:'smart-store', rank:9, cat:'fac', name:'스마트상점 기술보급', org:'소상공인시장진흥공단', isNew:true,
-    amount:'최대 700만<br>(배리어프리)', status:'tbd', deadline:null, hint:'soon',
-    when:'1차(3.13~4.1) 마감 · 추가모집 누리집 알림 확인',
-    links:[{c:'gov',u:'https://www.sbiz.or.kr/smst/index.do',t:'🟢 스마트상점'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117079',t:'📋 공고문'},{c:'news',u:'https://www.sbiz.or.kr/smst/bbs/view.do?key=2111306039167&bbsSn=9674',t:'📰 공지사항'}],
-    action:'<strong>스마트상점 누리집(sbiz.or.kr/smst)에서 수요기업 신청 → 스마트POS·재고관리 도입.</strong> 배리어프리 한도 700만 상향, 렌탈·SW형 최대 2년 지원.',
-    phone:'📞 스마트상점팀: <a href="tel:0423636821" style="color:inherit;text-decoration:underline">042-363-6821</a>' },
 
   { id:'fisheries-fund', rank:10, cat:'fac', name:'수산발전기금 (수산정책자금)', org:'해양수산부 / 수협은행',
     amount:'최대 15억', status:'milestone', deadline:'2026-06-15', hint:null,
@@ -1525,13 +1512,6 @@ const FUNDS = [
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/',t:'📰 22개시군비교'}],
     action:'8순위 시설자금 승인 후 추가 설비 확충용으로 활용.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a>' },
-
-  { id:'wando-revital', rank:14, cat:'fac', name:'완도군 어촌 신활력 증진', org:'해양수산부 / 완도군', isNew:true,
-    amount:'100억(지역)', status:'always', deadline:null, hint:'relaxed',
-    when:'2026~2030 장기사업 · 연계 참여 협의',
-    links:[{c:'local',u:'https://www.wando.go.kr/',t:'🏛️ 완도군청'},{c:'news',u:'https://go.seoul.co.kr/news/newsView.php?id=20251106500180',t:'📰 선정보도'},{c:'gov',u:'https://www.bizinfo.go.kr/',t:'📋 기업마당'}],
-    action:'완도군 해양수산과에 연계사업 참여 의사 전달. 수산인프라 활용 계획 사전 협의.',
-    phone:'📞 완도군 해양수산과: <a href="tel:0615505393" style="color:inherit;text-decoration:underline">061-550-5393</a>' }
 ];
 /* =================================================================
    FUND_DATA_END
@@ -1696,11 +1676,31 @@ function switchTab(t){
   facBtn.className='tab-btn'+(t==='fac'?' active-fac':'');
 }
 
+// 곧 열릴 예정 · 참고 공고(현재 신청 불가) — 별도 섹션
+function renderUpcoming(rows){
+  const el=document.getElementById('upcomingFunds'); if(!el) return;
+  if(!rows.length){ el.innerHTML=''; return; }
+  const cards=rows.map(r=>{
+    const ty=TYPE[r.f.cat];
+    const links=r.f.links.map(l=>`<a class="tl-link tl-link-${l.c}" href="${l.u}" target="_blank">${l.t}</a>`).join('');
+    const nb=r.f.isNew?' <span class="new-badge">NEW</span>':'';
+    return `<div style="background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:12px 14px;opacity:.92">`+
+      `<div style="font-weight:700;color:var(--text);font-size:.85rem">${r.f.name}${nb} <span class="tl-type ${ty.c}" style="font-size:.58rem">${ty.l}</span></div>`+
+      `<div class="tl-sub">${r.f.org} · ${r.f.amount.replace(/<br>/g,' ')}</div>`+
+      `<div style="font-size:.74rem;color:#f1c40f;font-weight:600;margin:5px 0">🔔 ${r.f.when}</div>`+
+      `<div class="tl-links">${links}</div></div>`;
+  }).join('');
+  el.innerHTML=`<div style="margin-top:24px"><div style="font-size:.9rem;font-weight:800;color:var(--muted);margin-bottom:10px">🔜 곧 열릴 예정 · 참고 공고 <span style="font-weight:500;font-size:.72rem">(현재는 신청 불가 — 다음 회차/연계 대기, 누리집 알림 권장)</span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">${cards}</div></div>`;
+}
+
 function renderAll(){
   const rows=computeRows();
-  renderTimeline(rows);
-  renderAlert(rows);
-  renderChecklist(rows);
+  const applyRows=rows.filter(r=>r.tr!=='closed' && r.f.status!=='tbd'); // 오늘부터 신청 가능
+  const upRows=rows.filter(r=>r.f.status==='tbd');                       // 예정·참고
+  renderTimeline(applyRows);
+  renderUpcoming(upRows);
+  renderAlert(applyRows);
+  renderChecklist(applyRows);
   renderDates();
 }
 renderAll();

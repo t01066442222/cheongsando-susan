@@ -40,8 +40,11 @@ try {
   const out = runner(store);
   if (!Array.isArray(out.FUNDS) || out.FUNDS.length === 0) fail('FUNDS 비어있음');
   if (!Array.isArray(out.rows) || out.rows.length !== out.FUNDS.length) fail('computeRows 행 수 불일치');
+  // 메인 타임라인 = 오늘부터 신청 가능(마감 안 지남 + tbd 아님)
+  const applyCount = out.rows.filter(r => r.tr !== 'closed' && r.f && r.f.status !== 'tbd').length;
   const tlRows = (store['tlBody'].innerHTML.match(/tl-row/g) || []).length;
-  if (tlRows !== out.FUNDS.length) fail('타임라인 렌더 행 수 불일치 (' + tlRows + '/' + out.FUNDS.length + ')');
+  if (tlRows === 0) fail('타임라인에 신청 가능 공고가 0건');
+  if (tlRows !== applyCount) fail('타임라인 렌더 행 수 불일치 (' + tlRows + '/신청가능 ' + applyCount + ')');
   // 각 항목 필수 필드
   for (const f of out.FUNDS) {
     for (const k of ['id', 'cat', 'name', 'org', 'amount', 'status', 'when', 'links', 'action']) {
