@@ -30,8 +30,8 @@ cheongsando-susan/
 
 ## 데이터 수정 방법 (수동)
 `index.html` 의 `FUND_DATA_START` ~ `FUND_DATA_END` 사이 `const FUNDS = [...]` 만 고치면 된다.
-각 항목: `status`('fixed'|'window'|'rolling'|'always'|'estimated'|'milestone'), `deadline`('YYYY-MM-DD'|null),
-`hint`('now'|'soon'|'relaxed'). D-day·정렬은 자동 계산되므로 정확한 `deadline`/`status`만 넣으면 됨.
+각 항목: `status`(**'date'**=확정마감일·deadline필수 | 'window'=접수기간·start+deadline | 'monthly'=매월말신청 | 'milestone'=자격충족예정일 | 'always'=상시·연중 | 'tbd'=후속공고대기),
+`deadline`('YYYY-MM-DD'|null), `hint`('always'전용: 'now'|'soon'|'relaxed'). **공고 마감일이 핵심** — 확정 마감일은 'date'+deadline으로 넣으면 화면에 날짜+D-day가 크게 표시되고 매일 자동 갱신됨.
 
 ## 최초 1회 설정 (사용자)
 GitHub 배포를 위해 인증이 필요하다(만료된 토큰 갱신):

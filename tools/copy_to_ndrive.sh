@@ -27,6 +27,6 @@ if (-not (Test-Path -LiteralPath $nd)) { New-Item -ItemType Directory -LiteralPa
 Copy-Item -LiteralPath 'C:\Temp\cs_index.html' -Destination (Join-Path $nd 'index.html') -Force
 Write-Output "COPIED"
 PS
-OUT=$(powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\\Temp\\cp_n.ps1" 2>&1)
+OUT=$(powershell.exe -NoProfile -File "C:\\Temp\\cp_n.ps1" 2>&1)
 echo "$OUT" | grep -q "COPIED" && { echo "[copy] PowerShell 경유 복사 완료"; exit 0; }
 echo "[copy] 실패: $OUT"; exit 1

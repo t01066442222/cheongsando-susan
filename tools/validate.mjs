@@ -48,7 +48,7 @@ try {
       if (!(k in f)) fail('FUNDS 항목 필드 누락: ' + (f.id || f.name || '?') + '.' + k);
     }
     if (!['op', 'fac', 'grant'].includes(f.cat)) fail('잘못된 cat: ' + f.name + ' = ' + f.cat);
-    if (!['fixed', 'window', 'rolling', 'always', 'estimated', 'milestone'].includes(f.status)) fail('잘못된 status: ' + f.name + ' = ' + f.status);
+    if (!['date', 'fixed', 'window', 'monthly', 'milestone', 'always', 'tbd', 'rolling', 'estimated'].includes(f.status)) fail('잘못된 status: ' + f.name + ' = ' + f.status);
   }
   console.log('[validate] ✓ OK — FUNDS ' + out.FUNDS.length + '건, 타임라인 ' + tlRows + '행 렌더 정상');
 } catch (e) {
