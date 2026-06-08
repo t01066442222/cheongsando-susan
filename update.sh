@@ -13,6 +13,10 @@ LOG="$REPO/update.log"
 TODAY="$(date +%Y-%m-%d)"
 MODEL="${CS_UPDATE_MODEL:-sonnet}"   # 비용 절감 기본 sonnet. CS_UPDATE_MODEL=opus 로 변경 가능
 export PATH="$HOME/.local/bin:$PATH" # claude CLI 경로 보장(cron 환경)
+# node 경로 보장: 작업 스케줄러(wsl) 환경엔 nvm PATH가 없어 검증(node tools/validate.mjs)이 실패·롤백됨.
+# nvm 로드 후, 그래도 없으면 설치된 최신 node bin 을 폴백으로 PATH 추가(버전 업그레이드에도 안전).
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" >/dev/null 2>&1
+command -v node >/dev/null 2>&1 || export PATH="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1):$PATH"
 
 cd "$REPO" || { echo "repo 없음"; exit 1; }
 # 로그를 파일과 화면에 동시 기록
