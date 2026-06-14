@@ -1681,17 +1681,17 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-06-12',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-06-14',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 2027년 수산업경영인 선발 대비 (2026 모집 2월 마감)' }
 };
 
 const FUNDS = [
   { id:'kosmes-youth', rank:1, cat:'op', name:'중진공 청년전용창업자금', org:'중소벤처기업진흥공단',
-    amount:'최대 2억', status:'date', deadline:'2026-06-15', hint:'now',
-    when:'⚠️ 소상공인(도소매·상시1명)이라 중진공 정책자금 원칙 제외 — 혁신성장분야(스마트어업·AI) 영위 인정 시에만 예외 신청 가능. 업력 3년 마감 6/15 전 사전확인 필수',
+    amount:'최대 2억', status:'monthly', deadline:null, hint:'soon',
+    when:'⚠️ 소상공인(도소매·상시1명)이라 중진공 정책자금 원칙 제외 — 혁신성장분야(스마트어업·AI) 영위 인정 시에만 예외 신청 가능. 6/15 업력 3년 달성 완료 → 중점지원분야 예외 인정 확인 후 매월 배치 신청 · 7월 배치 준비',
     links:[{c:'gov',u:'https://www.kosmes.or.kr/dh/map/main.do',t:'🟢 중진공 신청'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941',t:'📋 융자공고'},{c:'news',u:'https://digital.kosmes.or.kr/nsh/SH/SBI/SHSBI099M0.do',t:'📅 접수일정'}],
-    action:'<strong>먼저 중진공 전남본부에 "수산물 유통 소상공인이 청년전용창업자금 소상공인 예외(중점지원분야 영위)에 해당하는지" 사전확인.</strong> 해당 시 상담예약→배치심사. 미해당 시 수산발전기금·소진공 자금으로 전환. 금리 연 2.5% 고정.',
+    action:'<strong>중진공 전남본부에 "수산물 유통 소상공인이 청년전용창업자금 소상공인 예외(중점지원분야 영위)에 해당하는지" 확인.</strong> 해당 시 7월 배치 상담예약→배치심사. 미해당 시 수산발전기금·소진공 자금으로 전환. 금리 연 2.5% 고정.',
     phone:'📞 중진공 전남: <a href="tel:0612802600" style="color:inherit;text-decoration:underline">061-280-2600</a> | 콜센터: <a href="tel:18113655" style="color:inherit;text-decoration:underline">1811-3655</a>' },
 
   { id:'young-fisher', rank:2, cat:'grant', name:'청년어촌정착지원사업', org:'해양수산부 / 귀어귀촌종합센터', isNew:false,
