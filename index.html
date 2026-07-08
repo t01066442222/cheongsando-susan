@@ -1681,7 +1681,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-07-05',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-07-08',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 2027년 수산업경영인 선발 대비 (2026 모집 2월 마감)' }
 };
@@ -1696,7 +1696,7 @@ const FUNDS = [
 
   { id:'semas-youth-emp', rank:2, cat:'op', name:'청년고용연계자금', org:'소상공인시장진흥공단', isNew:true,
     amount:'7천만원', status:'always', deadline:null, hint:'soon',
-    when:'연중 접수 · 예산 소진 시 마감 (현재 집행중)',
+    when:'2026년 3분기 대리대출 접수 개시(2026-07-06~) · 예산 1,500억원 확대편성(4/16) · 예산 소진 시 마감',
     links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021',t:'📋 융자공고'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
     action:'<strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 → 비대면 신청.</strong> 상시근로자 1명(4대보험) 고용 + 대표 만31세 → 고용연계 요건·가점 충족. 비수도권 0.2%p 우대. 예산 소진 전 신청.',
     phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
@@ -1723,17 +1723,17 @@ const FUNDS = [
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 완도지점: <a href="tel:0615555011" style="color:inherit;text-decoration:underline">061-555-5011</a>' },
 
   { id:'semas-general', rank:6, cat:'op', name:'소진공 일반경영안정자금', org:'소상공인시장진흥공단',
-    amount:'7천만원', status:'always', deadline:null, hint:'relaxed',
-    when:'연중 접수 · 업력 무관 (예산 여유 시 보완)',
+    amount:'7천만원', status:'always', deadline:null, hint:'soon',
+    when:'2026년 3분기 대리대출 접수 중(2026-07-06~) · 매년 가장 빠르게 소진되는 자금 — 예산 소진 시 마감',
     links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
     action:'소진공 온라인(ols.semas.or.kr) → 일반경영안정 선택 → 비대면 신청. 업력 무관 보완 자금. 변동금리 주의.',
     phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
 
   { id:'kosmes-startup', rank:4, cat:'fac', name:'중진공 창업기반지원자금', org:'중소벤처기업진흥공단',
-    amount:'연간 5억', status:'monthly', deadline:null, hint:'soon',
-    when:'매월 말 신청 → 다음 달 배치 (시설계획서 준비)',
+    amount:'최대 60억<br>(운전 5억)', status:'monthly', deadline:null, hint:'soon',
+    when:'2026-01-05~ 예산 소진 시까지 상시접수 · 전남지역본부 상담예약 후 월 단위 심사·배치 (시설계획서 준비)',
     links:[{c:'gov',u:'https://www.kosmes.or.kr/dh/map/main.do',t:'🟢 중진공 신청'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000116941',t:'📋 융자공고'},{c:'gov',u:'https://www.k-startup.go.kr/',t:'🚀 K-Startup'}],
-    action:'<strong>시설투자계획서 + 설비 견적서 3개사 이상 확보 → 다음 달 배치 접수.</strong> 냉동·물류 설비 구체화, 매출 15억 실적으로 한도 5억 타겟. 업력 7년 미만 대상.',
+    action:'<strong>시설투자계획서 + 설비 견적서 3개사 이상 확보 → 전남지역본부 상담예약 후 접수.</strong> 시설자금 한도 최대 60억원(운전자금은 5억원 한도) — 냉동·물류 설비 구체화, 매출 15억 실적 기반 시설자금 목표 설정. 업력 7년 미만 대상.',
     phone:'📞 중진공 전남지역본부: <a href="tel:0612808070" style="color:inherit;text-decoration:underline">061-280-8070</a>' },
 
   { id:'fisheries-fund', rank:8, cat:'fac', name:'수산발전기금 (수산정책자금)', org:'해양수산부 / 수협은행',
