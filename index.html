@@ -1681,7 +1681,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-07-28',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-07-29',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 2027년 수산업경영인 선발 대비 (2026 모집 2월 마감)' }
 };
@@ -1689,9 +1689,9 @@ const META = {
 const FUNDS = [
   { id:'wando-rate', rank:1, cat:'op', name:'완도군 소상공인 이차보전', org:'완도군청 (연 9억 예산)',
     amount:'이자 3%<br>지원', status:'always', deadline:null, hint:'now',
-    when:'선착순 · 예산 소진 시 마감 (잔여예산 즉시 확인)',
-    links:[{c:'local',u:'https://www.wando.go.kr/',t:'🏛️ 완도군청'},{c:'news',u:'https://search.naver.com/search.naver?where=news&query=%EC%99%84%EB%8F%84%EA%B5%B0+9%EC%96%B5+%ED%88%AC%EC%9E%85+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%A7%80%EC%9B%90',t:'📰 관련뉴스'}],
-    action:'<strong>전남신보 해남지점(완도 관할 · ☎061-535-9333) 방문 → 보증서 발급 → 협약은행 대출(최대 5천만, 이자 3%×2년 완도군 부담).</strong> 예산 선착순 소진형(2026년 9억 편성 · 완도군 고시 제2026-108호). 중진공 자금과 결합 시 실질금리 0%대 달성.',
+    when:'선착순 · 예산 소진 시 마감 (잔여예산 즉시 확인) · ⚠️전국 지역신용보증재단 재보증예산 부족으로 8월부터 재보증비율 50%→30% 인하 — 보증 여력 축소 전 서두를 것',
+    links:[{c:'local',u:'https://www.wando.go.kr/',t:'🏛️ 완도군청'},{c:'news',u:'https://search.naver.com/search.naver?where=news&query=%EC%99%84%EB%8F%84%EA%B5%B0+9%EC%96%B5+%ED%88%AC%EC%9E%85+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%A7%80%EC%9B%90',t:'📰 관련뉴스'},{c:'news',u:'https://search.naver.com/search.naver?where=news&query=%EC%A7%80%EC%97%AD%EC%8B%A0%EC%9A%A9%EB%B3%B4%EC%A6%9D%EC%9E%AC%EB%8B%A8+%EC%9E%AC%EB%B3%B4%EC%A6%9D+%EC%98%88%EC%82%B0+%EB%B6%80%EC%A1%B1',t:'📰 재보증 예산부족 뉴스'}],
+    action:'<strong>전남신보 해남지점(완도 관할 · ☎061-535-9333) 방문 → 보증서 발급 → 협약은행 대출(최대 5천만, 이자 3%×2년 완도군 부담).</strong> 예산 선착순 소진형(2026년 9억 편성 · 완도군 고시 제2026-108호). 중진공 자금과 결합 시 실질금리 0%대 달성. <u>최근 전국 지역신용보증재단(지역신보) 재보증 예산이 요청액(4,130억) 대비 1,570억만 편성돼 경남 등 일부 지역은 이미 일반보증 신규접수를 중단</u> — 전남신보도 8월 재보증비율 인하(50%→30%) 영향권이라 보증서 발급을 최대한 앞당길 것.',
     phone:'📞 전남신보 해남지점(완도 관할): <a href="tel:0615359333" style="color:inherit;text-decoration:underline">061-535-9333</a> | 완도군 경제교통과 소상공인지원팀: <a href="tel:0615505195" style="color:inherit;text-decoration:underline">061-550-5195</a>' },
 
   { id:'semas-youth-emp', rank:2, cat:'op', name:'청년고용연계자금', org:'소상공인시장진흥공단', isNew:true,
@@ -1716,10 +1716,10 @@ const FUNDS = [
     phone:'📞 두루누리 콜센터: <a href="tel:15880075" style="color:inherit;text-decoration:underline">1588-0075</a>' },
 
   { id:'jn-fund', rank:5, cat:'op', name:'전남 소상공인 육성자금', org:'전라남도 / 전남신용보증재단',
-    amount:'최대 2억', status:'always', deadline:null, hint:'soon',
-    when:'연중 접수 · 전남신보 경유 (예산 소진 시 마감)',
+    amount:'최대 2억', status:'always', deadline:null, hint:'now',
+    when:'연중 접수 · 전남신보 경유 (예산 소진 시 마감) · ⚠️전국 지역신보 재보증예산 부족 여파로 8월부터 재보증비율 인하 — 신청 서두를 것',
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://search.naver.com/search.naver?query=%EC%A0%84%EB%82%A8+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%9C%A1%EC%84%B1%EC%9E%90%EA%B8%88+%EC%A7%80%EC%9B%90',t:'📰 안내검색'}],
-    action:'<strong>전남신보 해남지점(완도 관할) 방문 → 보증서 발급 → 협약은행 대출.</strong> 도 이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금.',
+    action:'<strong>전남신보 해남지점(완도 관할) 방문 → 보증서 발급 → 협약은행 대출.</strong> 도 이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금. <u>전국 지역신보 재보증 예산 부족(요청 4,130억 중 1,570억만 편성)으로 8월부터 재보증비율 50%→30% 인하 예정</u> — 완도군 이차보전 자금과 함께 보증서 발급을 우선 처리할 것.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 해남지점(완도 관할): <a href="tel:0615359333" style="color:inherit;text-decoration:underline">061-535-9333</a>' },
 
   { id:'semas-general', rank:6, cat:'op', name:'소진공 일반경영안정자금', org:'소상공인시장진흥공단',
@@ -1744,8 +1744,8 @@ const FUNDS = [
     phone:'📞 수협 완도: <a href="tel:0615529651" style="color:inherit;text-decoration:underline">061-552-9651</a>' },
 
   { id:'jn-startup', rank:9, cat:'fac', name:'전남 육성자금 (창업형)', org:'전라남도',
-    amount:'최대 1억', status:'always', deadline:null, hint:'relaxed',
-    when:'연중 접수 · 전남신보 경유',
+    amount:'최대 1억', status:'always', deadline:null, hint:'soon',
+    when:'연중 접수 · 전남신보 경유 · 전국 지역신보 재보증예산 부족으로 8월부터 재보증비율 인하 예정 — 여유 있을 때 서두를 것',
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/',t:'📰 22개시군비교'}],
     action:'중진공 창업기반지원자금(시설자금) 승인 후 추가 설비 확충용으로 활용.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a>' },
