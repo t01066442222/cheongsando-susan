@@ -1681,7 +1681,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-08-20',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-08-21',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 2027년 수산업경영인 선발 대비 (2026 모집 2월 마감)' }
 };
@@ -1694,21 +1694,21 @@ const FUNDS = [
     action:'<strong>전남신보 해남지점(완도 관할 · ☎061-535-9333) 방문 → 보증서 발급 → 협약은행 대출(최대 5천만, 이자 3%×2년 완도군 부담).</strong> 예산 선착순 소진형(2026년 9억 편성 · 완도군 고시 제2026-108호). 중진공 자금과 결합 시 실질금리 0%대 달성. <u>최근 전국 지역신용보증재단(지역신보) 재보증 예산이 요청액(4,130억) 대비 1,570억만 편성돼 경남 등 일부 지역은 이미 일반보증 신규접수를 중단</u> — 전남신보도 8월 재보증비율 인하(50%→30%)가 시행 중이며 9월부터는 전액보증 원칙까지 금지될 예정이라 보증서 발급을 최대한 앞당길 것.',
     phone:'📞 전남신보 해남지점(완도 관할): <a href="tel:0615359333" style="color:inherit;text-decoration:underline">061-535-9333</a> | 완도군 경제교통과 소상공인지원팀: <a href="tel:0615505195" style="color:inherit;text-decoration:underline">061-550-5195</a>' },
 
-  { id:'semas-youth-emp', rank:2, cat:'op', name:'청년고용연계자금', org:'소상공인시장진흥공단', isNew:true,
-    amount:'7천만원', status:'always', deadline:null, hint:'soon',
-    when:'2026-07-06~ 3분기 대리대출(협약은행) 접수 중(온라인 ols.semas.or.kr) · 예산 1,500억원 확대편성(4/16) · 예산 소진 시 마감',
+  { id:'semas-youth-emp', rank:2, cat:'op', name:'청년고용연계자금', org:'소상공인시장진흥공단',
+    amount:'7천만원', status:'always', deadline:null, hint:'now',
+    when:'2026-07-06~ 3분기 대리대출(협약은행) 접수 중(온라인 ols.semas.or.kr) · 같은 3분기 배치의 일반경영안정자금은 이미 예산 소진으로 마감(4분기 10/6 재개 확정) — 청년고용연계자금도 소진 임박 가능성 높아 서두를 것',
     links:[{c:'gov',u:'https://www.semas.or.kr/web/SUP01/SUP0103/SUP010301.kmdc',t:'🟢 소진공 안내'},{c:'doc',u:'https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021',t:'📋 융자공고'},{c:'gov',u:'https://ols.semas.or.kr/',t:'💻 온라인신청'}],
     action:'<strong>소진공 온라인(ols.semas.or.kr) → 청년소상공인 트랙 → 비대면 신청.</strong> 상시근로자 1명(4대보험) 고용 + 대표 만31세 → 고용연계 요건·가점 충족. 비수도권 0.2%p 우대. 예산 소진 전 신청.',
     phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
 
-  { id:'suhyup-general-fund', rank:3, cat:'op', name:'수산해양일반자금', org:'수협은행', isNew:true,
+  { id:'suhyup-general-fund', rank:3, cat:'op', name:'수산해양일반자금', org:'수협은행',
     amount:'최대 10억<br>(신용/담보)', status:'always', deadline:null, hint:'soon',
     when:'상시 접수 · 정책자금이 아닌 수협은행 일반 대출상품 — 수산업법상 수산물 유통업(도소매·수출입) 명시 대상, 운전자금·시설자금 모두 가능',
     links:[{c:'gov',u:'https://biz.suhyup-bank.com/ib20/mnu/CBM01529',t:'🟢 수협은행 상품안내'},{c:'gov',u:'https://suhyup-bank.com/ib20/mnu/FPD00126?PRODNO=85',t:'💻 해양수산 전체상품'}],
     action:'<strong>완도 관할 수협 지점(청산도: 완도소안수협 청산지점 / 완도읍권: 완도금일수협) 방문 → 수산물 유통업(도소매) 대출 상담.</strong> 신용등급·담보 여부에 따라 최저 연 3.0%대부터 적용, 신용대출 최대 10억(본부 승인 시 증액 가능). 정책자금 소진 시 대체·보완 재원으로 즉시 활용 가능.',
     phone:'📞 완도소안수협 청산지점: <a href="tel:0615528545" style="color:inherit;text-decoration:underline">061-552-8545</a> | 완도금일수협: <a href="tel:0615542585" style="color:inherit;text-decoration:underline">061-554-2585</a>' },
 
-  { id:'duru-nuri', rank:7, cat:'grant', name:'두루누리 사회보험료 지원', org:'근로복지공단 / 국민연금공단', isNew:true,
+  { id:'duru-nuri', rank:7, cat:'grant', name:'두루누리 사회보험료 지원', org:'근로복지공단 / 국민연금공단',
     amount:'보험료 80%<br>지원', status:'always', deadline:null, hint:'soon',
     when:'상시 신청 · 신규가입·월보수 270만원 미만 근로자 대상',
     links:[{c:'gov',u:'https://www.insurancesupport.or.kr/',t:'🟢 두루누리'},{c:'gov',u:'https://www.4insure.or.kr/',t:'💻 4대사회보험'},{c:'doc',u:'https://www.comwel.or.kr/',t:'📋 근로복지공단'}],
@@ -1738,7 +1738,7 @@ const FUNDS = [
 
   { id:'jn-startup', rank:9, cat:'fac', name:'전남 육성자금 (창업형)', org:'전라남도',
     amount:'최대 1억', status:'always', deadline:null, hint:'soon',
-    when:'연중 접수 · 전남신보 경유 · 전국 지역신보 재보증비율 인하 8월부터 시행 중 · 9월부터 전액보증 원칙 금지도 예정 — 여유 있을 때 서두를 것',
+    when:'연중 접수 · 전남신보 경유 · 창업 2년 미만 또는 업력 5년 미만+최근 2년 내 전남신보·전남창조경제혁신센터·소진공 창업교육 이수 시 대상(청산도수산 업력 3년 2개월 경과 — 전남신보 사전 자격확인 필요) · 전국 지역신보 재보증비율 인하 8월부터 시행 중 · 9월부터 전액보증 원칙 금지도 예정',
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/',t:'📰 22개시군비교'}],
     action:'중진공 창업기반지원자금(시설자금) 승인 후 추가 설비 확충용으로 활용.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a>' },
