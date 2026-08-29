@@ -1681,7 +1681,7 @@ footer{text-align:center;padding:26px;border-top:1px solid var(--border);font-si
    ================================================================= */
 const META = {
   company: '청산도수산',
-  dataUpdated: '2026-08-28',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
+  dataUpdated: '2026-08-29',                 // ← 봇이 매 실행 시 오늘 날짜로 갱신
   rateNote: '비수도권(완도) <strong>금리 0.2%p 우대</strong> 유지',
   milestone: { fundId: 'fisheries-fund', date: '2026-06-15', label: '업력 3년 달성(6/15) — 2027년 수산업경영인 선발 대비 (2026 모집 2월 마감)' }
 };
@@ -1708,6 +1708,13 @@ const FUNDS = [
     action:'<strong>완도 관할 수협 지점(청산도: 완도소안수협 청산지점 / 완도읍권: 완도금일수협) 방문 → 수산물 유통업(도소매) 대출 상담.</strong> 신용등급·담보 여부에 따라 최저 연 3.0%대부터 적용, 신용대출 최대 10억(본부 승인 시 증액 가능). 정책자금 소진 시 대체·보완 재원으로 즉시 활용 가능.',
     phone:'📞 완도소안수협 청산지점: <a href="tel:0615528545" style="color:inherit;text-decoration:underline">061-552-8545</a> | 완도금일수협: <a href="tel:0615542585" style="color:inherit;text-decoration:underline">061-554-2585</a>' },
 
+  { id:'semas-smart-store', rank:6, cat:'grant', name:'스마트상점 기술보급사업(추가모집)', org:'소상공인시장진흥공단',
+    amount:'설치비<br>최대 70%', status:'window', start:'2026-08-26', deadline:'2026-09-30', hint:null,
+    when:'2026-08-26 10:00~2026-09-30 17:00 추가모집 접수 중(본모집 3~4월분과 별도) · 스마트오더·키오스크·재고관리 등 매장 디지털전환 설비(구입형·렌탈형·S/W형) 도입비 지원',
+    links:[{c:'gov',u:'https://www.sbiz.or.kr/smst/index.do',t:'🟢 소진공 스마트상점'},{c:'doc',u:'https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000119308',t:'📋 공고원문'}],
+    action:'<strong>sbiz.or.kr(스마트상점) 온라인 신청 → 매장 설비(스마트오더·키오스크 등) 견적 확보 후 접수.</strong> 소상공인형 기준 설치비 최대 70% 국비 지원(자부담 30%). 9/30(수) 17시 마감 — 서두를 것.',
+    phone:'📞 소상공인 콜센터: <a href="tel:15330100" style="color:inherit;text-decoration:underline">1533-0100</a>' },
+
   { id:'duru-nuri', rank:7, cat:'grant', name:'두루누리 사회보험료 지원', org:'근로복지공단 / 국민연금공단',
     amount:'보험료 80%<br>지원', status:'always', deadline:null, hint:'soon',
     when:'상시 신청 · 신규가입·월보수 270만원 미만 근로자 대상',
@@ -1716,10 +1723,10 @@ const FUNDS = [
     phone:'📞 두루누리 콜센터: <a href="tel:15880075" style="color:inherit;text-decoration:underline">1588-0075</a>' },
 
   { id:'jn-fund', rank:5, cat:'op', name:'전남 소상공인 육성자금', org:'전라남도 / 전남신용보증재단',
-    amount:'최대 2억', status:'always', deadline:null, hint:'now',
-    when:'연중 접수 · 전남신보 경유 (예산 소진 시 마감) · ⚠️전국 지역신보 재보증비율 인하 8월부터 시행 중 · 9월부터 전액보증 원칙 금지도 예정 — 신청 서두를 것',
+    amount:'최대 2억', status:'window', start:'2026-06-26', deadline:'2026-10-30', hint:null,
+    when:'2026-06-26~2026-10-30 접수기간 확정(전남신보 각 지점 방문접수, 완도 관할 해남지점) · ⚠️전국 지역신보 재보증비율 인하(8/1 시행) · 9월부터 전액보증 원칙 금지도 시행 예정 — 신청 서두를 것',
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://search.naver.com/search.naver?query=%EC%A0%84%EB%82%A8+%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8+%EC%9C%A1%EC%84%B1%EC%9E%90%EA%B8%88+%EC%A7%80%EC%9B%90',t:'📰 안내검색'}],
-    action:'<strong>전남신보 해남지점(완도 관할) 방문 → 보증서 발급 → 협약은행 대출.</strong> 도 이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금. <u>전국 지역신보 재보증 예산 부족(요청 4,130억 중 1,570억만 편성)으로 8월부터 재보증비율 50%→30% 인하가 시행 중이며 9월부터는 전액보증 원칙까지 금지될 예정</u> — 완도군 이차보전 자금과 함께 보증서 발급을 우선 처리할 것.',
+    action:'<strong>전남신보 해남지점(완도 관할) 방문 → 보증서 발급 → 협약은행 대출.</strong> 도 이자보전 3.0~3.5% 결합 시 실질금리 1%대. 1순위 승인 후 추가 운전자금. <u>전국 지역신보 재보증 예산 부족(요청 4,130억 중 1,570억만 편성)으로 8월부터 재보증비율 50%→30% 인하가 시행 중이며 9월부터는 전액보증 원칙까지 금지될 예정</u> — 완도군 이차보전 자금과 함께 보증서 발급을 우선 처리할 것. 접수마감 10/30 전 서둘러 방문.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a> | 해남지점(완도 관할): <a href="tel:0615359333" style="color:inherit;text-decoration:underline">061-535-9333</a>' },
 
   { id:'kosmes-startup', rank:4, cat:'fac', name:'중진공 창업기반지원자금', org:'중소벤처기업진흥공단',
@@ -1731,14 +1738,14 @@ const FUNDS = [
 
   { id:'fisheries-fund', rank:8, cat:'fac', name:'수산발전기금 (수산정책자금)', org:'해양수산부 / 수협은행',
     amount:'최대 15억', status:'milestone', deadline:'2026-06-15', hint:null,
-    when:'✅ 2026-06-15 업력 3년 달성 완료 — 수산정책자금 신청 자격 취득. 2026년 전남 수산업경영인 선발(1차 2/27 마감, 추가모집 3/20 마감, 전국 606명 중 전남 233명 확정)·수산발전기금 일반모집(2026-02-06 마감, 총 1,804억) 모두 종료 · 하반기 추가공고 없음(2026-08-19 재확인) → 2027년 1~2월 공고 대비. 수협은행 완도지점 사전상담 착수 권장.',
+    when:'✅ 2026-06-15 업력 3년 달성 완료 — 수산정책자금 신청 자격 취득. 2026년 전남 수산업경영인 선발(1차 2/27 마감, 추가모집 3/20 마감, 전국 606명 중 전남 233명 확정)·수산발전기금 일반모집(2026-02-06 마감, 총 1,804억) 모두 종료 · 하반기 추가공고 없음(2026-08-29 재확인) · 2027년 선발 공고는 아직 사전예고 없음(예년 1~2월 공고 패턴) → 수협은행 완도지점 사전상담 착수 권장.',
     links:[{c:'gov',u:'https://suhyup-bank.com/',t:'🟢 수협은행'},{c:'gov',u:'https://ofsi.jeonnam.go.kr/',t:'🏛️ 전남해양수산과학원'},{c:'news',u:'https://www.law.go.kr/',t:'⚖️ 법령정보'}],
-    action:'<strong>업력 3년 달성(6/15) 완료 → 수협은행 완도지점 사전상담 예약.</strong> 2026년 전남 선발·수산발전기금 일반모집 모두 종료, 하반기 추가모집 없음 재확인(8/19). 2027년 1~2월 수산업경영인(어업인후계자) 선발 공고 및 수산발전기금 유통자금 신청 준비 착수. 선발 시 1.0% 초저리 이차보전·최대 15억(우수경영인 +2억), 유통자금(비어업인) 연 3%.',
+    action:'<strong>업력 3년 달성(6/15) 완료 → 수협은행 완도지점 사전상담 예약.</strong> 2026년 전남 선발·수산발전기금 일반모집 모두 종료, 하반기 추가모집 없음 재확인(8/29). 2027년 수산업경영인(어업인후계자) 선발 공고는 아직 사전예고 없음(예년 1~2월 공고·2~3월 마감 패턴) — 공고 시 즉시 신청 준비. 선발 시 1.0% 초저리 이차보전·최대 15억(우수경영인 +2억), 유통자금(비어업인) 연 3%.',
     phone:'📞 수협 완도: <a href="tel:0615529651" style="color:inherit;text-decoration:underline">061-552-9651</a>' },
 
   { id:'jn-startup', rank:9, cat:'fac', name:'전남 육성자금 (창업형)', org:'전라남도',
-    amount:'최대 1억', status:'always', deadline:null, hint:'soon',
-    when:'연중 접수 · 전남신보 경유 · 창업 2년 미만 또는 업력 5년 미만+최근 2년 내 전남신보·전남창조경제혁신센터·소진공 창업교육 이수 시 대상(청산도수산 업력 3년 2개월 경과 — 전남신보 사전 자격확인 필요) · 전국 지역신보 재보증비율 인하 8월부터 시행 중 · 9월부터 전액보증 원칙 금지도 예정',
+    amount:'최대 1억', status:'window', start:'2026-06-26', deadline:'2026-10-30', hint:null,
+    when:'2026-06-26~2026-10-30 접수기간(육성자금과 동일 창구, 전남신보 경유) · 창업 2년 미만 또는 업력 5년 미만+최근 2년 내 전남신보·전남창조경제혁신센터·소진공 창업교육 이수 시 대상(청산도수산 업력 3년 2개월 경과 — 전남신보 사전 자격확인 필요) · 전국 지역신보 재보증비율 인하(8/1) · 9월부터 전액보증 원칙 금지도 시행 예정',
     links:[{c:'gov',u:'https://www.jnsinbo.or.kr/',t:'🟢 전남신보'},{c:'news',u:'https://dnublog.co.kr/2026/03/02/2026-%EC%A0%84%EB%9D%BC%EB%82%A8%EB%8F%84-%EC%8B%9C%EA%B5%B0-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EC%9C%B5%EC%9E%90%EA%B8%88-%EC%9D%B4%EC%B0%A8%EB%B3%B4%EC%A0%84-%EC%97%AC%EC%88%98%C2%B7%EB%AA%A9/',t:'📰 22개시군비교'}],
     action:'중진공 창업기반지원자금(시설자금) 승인 후 추가 설비 확충용으로 활용.',
     phone:'📞 전남신보: <a href="tel:15883884" style="color:inherit;text-decoration:underline">1588-3884</a>' },
